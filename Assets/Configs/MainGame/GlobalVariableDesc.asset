@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a457cb58bb6524c8ab7c0661c9b463, type: 3}
+  m_Name: GlobalVariableDesc
+  m_EditorClassIdentifier: 
+  GlobalVariables:
+  - HP
+  - Money
+  - Like_Absinthe
+  - Like_Cabernet_Sauvignon
+  - Like_Hayaseura_Tokusen_Ginjo
+  - Like_Hpnotiq
+  - Like_Kahlua
+  InitialValues: 00000000000000000000000000000000000000000000000000000000

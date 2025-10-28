@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public sealed class UIThemeControlUnit : ScriptableObject
+{
+    public Image[] Image_Backgrounds;
+
+    public Image[] Image_ToolBarBackgrounds;
+
+    //public 
+}

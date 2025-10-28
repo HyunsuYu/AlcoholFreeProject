@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe0112895b42184ab63cfd9823fe63e, type: 3}
+  m_Name: MusicResourceDesc
+  m_EditorClassIdentifier: 
+  CharacterMusics:
+  - CharacterMusicClips:
+    - {fileID: 8300000, guid: 3eddee2f82c2b11478545fa0cfcd02fc, type: 3}
+  - CharacterMusicClips:
+    - {fileID: 8300000, guid: c12f6f2f2f1edb244b8aaedb280c1683, type: 3}
+  - CharacterMusicClips:
+    - {fileID: 8300000, guid: cd16014ad4ed94e449f6d52e686f83be, type: 3}
+  - CharacterMusicClips:
+    - {fileID: 8300000, guid: 9727da7b2e049f84db42f518cf86bac8, type: 3}
+  - CharacterMusicClips:
+    - {fileID: 8300000, guid: 43cadbbef8b648f439432f7b8df8ee68, type: 3}
+  BackgroundMusicClips:
+  - {fileID: 8300000, guid: 5f47d98fa4762db4bae711e98e88050f, type: 3}
+  - {fileID: 8300000, guid: ca8a8f15d5b564e4282950e45b776217, type: 3}
+  - {fileID: 8300000, guid: 536b8c80fe4ca1244b81a88bfc106c0c, type: 3}
+  - {fileID: 8300000, guid: ca8a8f15d5b564e4282950e45b776217, type: 3}
+  - {fileID: 8300000, guid: ca8a8f15d5b564e4282950e45b776217, type: 3}
+  - {fileID: 8300000, guid: ed2432f5b82874340ab874c7fe4af436, type: 3}
+  - {fileID: 8300000, guid: ca8a8f15d5b564e4282950e45b776217, type: 3}
+  - {fileID: 8300000, guid: 3a2ddea5994967e43ad0bc8eb299801b, type: 3}
+  - {fileID: 8300000, guid: 56f28c8a96ec4a04b8abf74e1874d15f, type: 3}
+  - {fileID: 8300000, guid: aa633d4dce5cd804fa548d76fd4d1b08, type: 3}
+  - {fileID: 8300000, guid: d7fc6487bc1cbc545a909f6bdcc4e1ae, type: 3}
+  - {fileID: 8300000, guid: dd49849fbf4d0d64b8b89ca5e8b29b78, type: 3}
+  - {fileID: 8300000, guid: ca8a8f15d5b564e4282950e45b776217, type: 3}
+  - {fileID: 8300000, guid: b08aa90126fcc7e4a9cb004edbe4f33b, type: 3}
+  - {fileID: 8300000, guid: b28ffaa23da489848bfab4a7a046b814, type: 3}
+  SFXMusicClips:
+  - {fileID: 8300000, guid: f5f233c99d990d14a83e0b50ae3cf8dc, type: 3}
+  - {fileID: 8300000, guid: 77cecd92af8fd0140b280100877e02a4, type: 3}
+  - {fileID: 8300000, guid: e54fa70a4f00808479af08a45ccb7ccf, type: 3}
+  - {fileID: 8300000, guid: 4c78f96860013cc4599d84e69b8c38f6, type: 3}
