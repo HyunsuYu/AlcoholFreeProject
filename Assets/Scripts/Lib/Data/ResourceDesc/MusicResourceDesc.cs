@@ -15,6 +15,7 @@ public sealed class MusicResourceDesc : ScriptableObject
         Bell,
         Wind,
         Heartbeat,
+        MessageBeep
     }
 
     [Serializable] public struct CharacterMusicData

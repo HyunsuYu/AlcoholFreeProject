@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: HayaseuraTokusenGinjoCharacterResourceDesc
   m_EditorClassIdentifier: 
   CharacterSprites:
-  - {fileID: 21300000, guid: d56ec2a93d266f04489c6dfdd06a0b7c, type: 3}
-  - {fileID: 21300000, guid: 8f115eed96911f244b6c526361c12caf, type: 3}
-  - {fileID: 21300000, guid: d2aed157becc12d41bb294515323eb32, type: 3}
-  - {fileID: 21300000, guid: fae8eb1ffb7777b46a2c9650287e8881, type: 3}
-  - {fileID: 21300000, guid: 15891a402acebe34f9191693c58aa6c3, type: 3}
-  - {fileID: 21300000, guid: bf3b34b29ed973744a83ee3795646e3a, type: 3}
-  - {fileID: 21300000, guid: 3d680f996189cc147a8bef2013d2401a, type: 3}
+  - {fileID: 21300000, guid: f63d60f552728c949910db32f9b4f5c8, type: 3}
+  - {fileID: 21300000, guid: eed65e290da056a4bb2afaa048416dde, type: 3}
+  - {fileID: 21300000, guid: b453b2edf95995e448d60fc72621ef14, type: 3}
+  - {fileID: 21300000, guid: d927a4b224324c94190aedde8d64ff41, type: 3}
+  - {fileID: 21300000, guid: 41420174420459845936578615efe93e, type: 3}
+  - {fileID: 21300000, guid: 81e74166083461a4fa77c1d00268f5f1, type: 3}
+  - {fileID: 21300000, guid: 8846b6317016ab540944bbeeb2e33972, type: 3}
   CharacterName: "\uC2DC\uB178\uB178\uBA54 \uD558\uC57C\uC138"

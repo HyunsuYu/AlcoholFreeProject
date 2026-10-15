@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CutSceneDataList:
   - CutSceneName: "\uC555\uC0DD\uD2B8 \uB370\uBAA8"
-    CurSceneSprite: {fileID: 21300000, guid: 2e0dbd4f38531124cadb932624e0420c, type: 3}
+    CurSceneSprite: {fileID: 21300000, guid: 8bc407bfe6a36d24dad40e7d340b84a5, type: 3}
   - CutSceneName: "\uC18C\uBE44\uB1FD \uB370\uBAA8"
-    CurSceneSprite: {fileID: 21300000, guid: a2402556000462e47af82fcf43b1e253, type: 3}
+    CurSceneSprite: {fileID: 21300000, guid: 0ced17d009e8a204d8b30f85672e05b5, type: 3}
   - CutSceneName: "\uC0AC\uCF00 \uB370\uBAA8"
-    CurSceneSprite: {fileID: 21300000, guid: 89de76f9b9f2c76478391e8751913c36, type: 3}
+    CurSceneSprite: {fileID: 21300000, guid: 62a79add01cfa2b41baaf21cb4a776ab, type: 3}
   - CutSceneName: "\uD799\uB178\uD2F1 \uB370\uBAA8"
     CurSceneSprite: {fileID: 21300000, guid: 8531a1ed862564f4e863d8365a0c788c, type: 3}
   - CutSceneName: "\uAE54\uB8E8\uC544 \uB370\uBAA8"
-    CurSceneSprite: {fileID: 21300000, guid: 56cbd4f567e46b9479199cdddd405e23, type: 3}
+    CurSceneSprite: {fileID: 21300000, guid: dbefedd9ad0b2fe47b4db8b9b5b99b6d, type: 3}

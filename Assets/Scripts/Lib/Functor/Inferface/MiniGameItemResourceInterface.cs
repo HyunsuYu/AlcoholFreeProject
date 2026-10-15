@@ -287,6 +287,46 @@ public sealed class MiniGameItemResourceInterface : SingleTonForGameObject<MiniG
         }
         return result;
     }
+    internal int GetItemPrice(in InventoryControl.ItemType targetItemType)
+    {
+        int result = int.MinValue;
+        if (targetItemType != InventoryControl.ItemType.None)
+        {
+            if (InventoryControl.ItemType.Absinthe <= targetItemType && targetItemType <= InventoryControl.ItemType.Champagne)
+            {
+                result = m_miniGameItemResourceDesc.AlcoholItems[(int)targetItemType - (int)InventoryControl.ItemType.Absinthe].Price;
+            }
+            else if (InventoryControl.ItemType.Water <= targetItemType && targetItemType <= InventoryControl.ItemType.Milgis)
+            {
+                result = m_miniGameItemResourceDesc.NonAlcoholItems[(int)targetItemType - (int)InventoryControl.ItemType.Water].Price;
+            }
+            else if (InventoryControl.ItemType.LumpSugar <= targetItemType && targetItemType <= InventoryControl.ItemType.LimeJuice)
+            {
+                result = m_miniGameItemResourceDesc.SubIngredientItems[(int)targetItemType - (int)InventoryControl.ItemType.LumpSugar].Price;
+            }
+            else if (InventoryControl.ItemType.LemonSlice <= targetItemType && targetItemType <= InventoryControl.ItemType.SilverSpoonWithSugarCube)
+            {
+                result = m_miniGameItemResourceDesc.GarnishItems[(int)targetItemType - (int)InventoryControl.ItemType.LemonSlice].Price;
+            }
+            else if (InventoryControl.ItemType.Ice <= targetItemType && targetItemType <= InventoryControl.ItemType.CubeIce)
+            {
+                result = m_miniGameItemResourceDesc.IceItems[(int)targetItemType - (int)InventoryControl.ItemType.Ice].Price;
+            }
+            else if (InventoryControl.ItemType.AbsintheGlass <= targetItemType && targetItemType <= InventoryControl.ItemType.OldFashionedGlass)
+            {
+                result = m_miniGameItemResourceDesc.GlassItems[(int)targetItemType - (int)InventoryControl.ItemType.AbsintheGlass].Price;
+            }
+            else if (InventoryControl.ItemType.Shaker <= targetItemType && targetItemType <= InventoryControl.ItemType.Shaker)
+            {
+                result = m_miniGameItemResourceDesc.ToolItems[(int)targetItemType - (int)InventoryControl.ItemType.Shaker].Price;
+            }
+            else if (InventoryControl.ItemType.SpoonShaking <= targetItemType && targetItemType <= InventoryControl.ItemType.HandShaking)
+            {
+                result = m_miniGameItemResourceDesc.ActionItems[(int)targetItemType - (int)InventoryControl.ItemType.SpoonShaking].Price;
+            }
+        }
+        return result;
+    }
 
     internal Color GetItemColor(in InventoryControl.ItemType targetItemType)
     {

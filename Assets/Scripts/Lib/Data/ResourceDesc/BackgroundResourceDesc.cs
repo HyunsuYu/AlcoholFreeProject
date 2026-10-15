@@ -27,8 +27,13 @@ public sealed class BackgroundResourceDesc : ScriptableObject
         School          = 12,
         Bar             = 13,
         NightStreet     = 14,
+
+        // 기타
+        Blackout_0      = 15,
+        Blackout_1      = 16,
     }
 
 
     public Sprite[] BackgroundSprites;
+    public string[] BackgorundNames;
 }

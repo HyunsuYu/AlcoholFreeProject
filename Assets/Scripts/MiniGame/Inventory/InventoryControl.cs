@@ -76,12 +76,14 @@ public sealed class InventoryControl : SingleTonForGameObject<InventoryControl>
         HandShaking,
     }
 
-    [Serializable] public struct ItemUIs
+    [Serializable]
+    public struct ItemUIs
     {
         public GameObject Layout_Inventory;
 
         [Header("Prefabs")]
         public GameObject Prefab_InventoryItem;
+        public GameObject Prefab_EmptyItem;
 
         [Header("Item Parent Transforms")]
         public Transform Transform_AlcoholItemParent;
@@ -116,7 +118,7 @@ public sealed class InventoryControl : SingleTonForGameObject<InventoryControl>
 
     [SerializeField] private Vector3 m_LiqureInfoPopupDistance;
 
-    private InventoryTabType m_curInventoryPageType = InventoryTabType.Alcohol;
+    private InventoryTabType m_curInventoryPageType = (InventoryTabType)byte.MaxValue;
 
     private bool m_isInitialized = false;
 
@@ -126,6 +128,13 @@ public sealed class InventoryControl : SingleTonForGameObject<InventoryControl>
     public void Awake()
     {
         SetInstance(this);
+
+        //OpenInventoryTab();
+    }
+    public void Start()
+    {
+        CurInventoryPageType = InventoryTabType.Glass;
+        OpenInventoryTab();
     }
     //public void Update()
     //{
@@ -152,7 +161,13 @@ public sealed class InventoryControl : SingleTonForGameObject<InventoryControl>
         {
             if (m_curInventoryPageType != value)
             {
+                if((byte)m_curInventoryPageType != byte.MaxValue)
+                {
+                    m_inventoryPageBtnItems[(int)m_curInventoryPageType].GetComponent<Animator>().Play("InvenBtn_Closing");
+                }
+
                 m_curInventoryPageType = value;
+                m_inventoryPageBtnItems[(int)m_curInventoryPageType].GetComponent<Animator>().Play("InvenBtn_Opening");
                 Render();
             }
         }
@@ -219,12 +234,12 @@ public sealed class InventoryControl : SingleTonForGameObject<InventoryControl>
 
     internal void Render()
     {
-        foreach(var btnItem in m_inventoryPageBtnItems)
+        foreach (var btnItem in m_inventoryPageBtnItems)
         {
             btnItem.Render();
         }
 
-        if(!m_isInitialized)
+        if (!m_isInitialized)
         {
             m_isInitialized = true;
             foreach (ItemType curItemType in Enum.GetValues(typeof(ItemType)))
@@ -293,6 +308,72 @@ public sealed class InventoryControl : SingleTonForGameObject<InventoryControl>
                         break;
                 }
             }
+
+            // 한 줄에 4개씩의 아이템 간격 맞춰주기
+            if (m_itemUIs.Transform_AlcoholItemParent.childCount % 4 != 0)
+            {
+                int initChildCount = m_itemUIs.Transform_AlcoholItemParent.childCount;
+                for (int count = 0; count < 4 - initChildCount + 1; count++)
+                {
+                    Instantiate(m_itemUIs.Prefab_EmptyItem, m_itemUIs.Transform_AlcoholItemParent);
+                }
+            }
+            if (m_itemUIs.Transform_NonAlcoholItemParent.childCount % 4 != 0)
+            {
+                int initChildCount = m_itemUIs.Transform_NonAlcoholItemParent.childCount;
+                for (int count = 0; count < 4 - initChildCount + 1; count++)
+                {
+                    Instantiate(m_itemUIs.Prefab_EmptyItem, m_itemUIs.Transform_NonAlcoholItemParent);
+                }
+            }
+            if (m_itemUIs.Transform_SubIngredientItemParent.childCount % 4 != 0)
+            {
+                int initChildCount = m_itemUIs.Transform_SubIngredientItemParent.childCount;
+                for (int count = 0; count < 4 - initChildCount + 1; count++)
+                {
+                    Instantiate(m_itemUIs.Prefab_EmptyItem, m_itemUIs.Transform_SubIngredientItemParent);
+                }
+            }
+            if (m_itemUIs.Transform_GarnishItemParent.childCount % 4 != 0)
+            {
+                int initChildCount = m_itemUIs.Transform_GarnishItemParent.childCount;
+                for (int count = 0; count < 4 - initChildCount + 1; count++)
+                {
+                    Instantiate(m_itemUIs.Prefab_EmptyItem, m_itemUIs.Transform_GarnishItemParent);
+                }
+            }
+            if (m_itemUIs.Transform_IceItemParent.childCount % 4 != 0)
+            {
+                int initChildCount = m_itemUIs.Transform_IceItemParent.childCount;
+                for (int count = 0; count < 4 - initChildCount + 1; count++)
+                {
+                    Instantiate(m_itemUIs.Prefab_EmptyItem, m_itemUIs.Transform_IceItemParent);
+                }
+            }
+            if (m_itemUIs.Transform_GlassItemParent.childCount % 4 != 0)
+            {
+                int initChildCount = m_itemUIs.Transform_GlassItemParent.childCount;
+                for (int count = 0; count < 4 - initChildCount + 1; count++)
+                {
+                    Instantiate(m_itemUIs.Prefab_EmptyItem, m_itemUIs.Transform_GlassItemParent);
+                }
+            }
+            if (m_itemUIs.Transform_ToolItemParent.childCount % 4 != 0)
+            {
+                int initChildCount = m_itemUIs.Transform_ToolItemParent.childCount;
+                for (int count = 0; count < 4 - initChildCount + 1; count++)
+                {
+                    Instantiate(m_itemUIs.Prefab_EmptyItem, m_itemUIs.Transform_ToolItemParent);
+                }
+            }
+            if (m_itemUIs.Transform_ActionItemParent.childCount % 4 != 0)
+            {
+                int initChildCount = m_itemUIs.Transform_ActionItemParent.childCount;
+                for (int count = 0; count < 4 - initChildCount + 1; count++)
+                {
+                    Instantiate(m_itemUIs.Prefab_EmptyItem, m_itemUIs.Transform_ActionItemParent);
+                }
+            }
         }
     }
     internal void OpenInventoryTab()
@@ -308,11 +389,11 @@ public sealed class InventoryControl : SingleTonForGameObject<InventoryControl>
                 m_layout_InventoryTabs[index].SetActive(false);
             }
         }
-        m_itemUIs.Layout_Inventory.SetActive(true);
+        //m_itemUIs.Layout_Inventory.SetActive(true);
     }
     internal void RenderInventoryLiqurePlaceholders()
     {
-        foreach(var placeholder in m_itemUIs.InventoryLiqurePlaceholders)
+        foreach (var placeholder in m_itemUIs.InventoryLiqurePlaceholders)
         {
             placeholder.Render((ItemType)placeholder.CurItemType);
         }

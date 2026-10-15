@@ -42,21 +42,36 @@ public sealed class BacklogMainItem : MonoBehaviour
                 if (curFrameData.CurBasicData.AppearCharacters.Count > 0)
                 {
                     CharacterResourceDesc.CharacterListType curSpeakCharacter = curFrameData.CurBasicData.AppearCharacters[curFrameData.CurBasicData.SpeakerCharacterIndex].Item1;
-
-                    if (curSpeakCharacter == CharacterResourceDesc.CharacterListType.MainCharacter)
+                    if (curFrameData.CurBasicData.BisDisplaySpeakerName)
                     {
-                        m_text_Name.text = NoonCanvasControl.MainCharacterName;
-
-                        if (speakText != null)
+                        if (curSpeakCharacter == CharacterResourceDesc.CharacterListType.MainCharacter)
                         {
-                            speakText = speakText.Replace("<Player>", m_text_Name.text);
+                            m_text_Name.text = NoonCanvasControl.MainCharacterName;
+                        }
+                        else
+                        {
+                            m_text_Name.text = ResourceDescBuffer.Instance.GetCharacterResourceDesc(curSpeakCharacter).CharacterName;
                         }
                     }
                     else
                     {
-                        m_text_Name.text = ResourceDescBuffer.Instance.GetCharacterResourceDesc(curSpeakCharacter).CharacterName;
+                        m_text_Name.text = "???";
                     }
                 }
+                if (speakText != null)
+                {
+                    speakText = speakText.Replace("<Player>", m_text_Name.text);
+                }
+
+                if (curFrameData.CurBasicData.CurConversationData.BIsBold)
+                {
+                    m_text_SpeakText.fontSize = SettingDataBuffer.Instance.SettingData.ControlSetting.FontSize * 1.5f;
+                }
+                else
+                {
+                    m_text_SpeakText.fontSize = SettingDataBuffer.Instance.SettingData.ControlSetting.FontSize;
+                }
+
                 //if (curFrameData.CurBasicData.AppearCharacters.Count > 0)
                 //{
                 //    m_text_Name.text = ResourceDescBuffer.Instance.GetCharacterResourceDesc(curFrameData.CurBasicData.AppearCharacters[curFrameData.CurBasicData.SpeakerCharacterIndex].Item1).CharacterName;

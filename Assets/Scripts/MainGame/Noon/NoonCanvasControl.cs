@@ -18,6 +18,7 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
     [SerializeField] private RectTransform m_rectTransform_Contents;
 
     [SerializeField] private Image m_image_Background;
+    [SerializeField] private GameObject m_gameObject_BackgroundBlur;
 
     [Header("Conversation")]
     [SerializeField] private Transform m_transform_ConversationParent;
@@ -89,7 +90,7 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
 
     private static string m_mainCharacterName = "주인공";
 
-    private FrameData? curFrameData = null;
+    private FrameData? m_curFrameData = null;
 
     private bool m_bisNowTransitioning = false;
 
@@ -198,7 +199,7 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
             && SettingDataBuffer.Instance.SettingData.ControlSetting.BIsAutoPlay && !m_bisNowAutoPlayWaiting && !m_bisBacklogOpened)
         {
             m_bisNowAutoPlayWaiting = true;
-            Invoke(nameof(CalculateNextFrame), SettingDataBuffer.Instance.SettingData.ControlSetting.FontSpeed * 1.5f);
+            Invoke(nameof(CalculateNextFrame), SettingDataBuffer.Instance.SettingData.ControlSetting.FontSpeed * 1.2f);
         }
         else if ((!SettingDataBuffer.Instance.SettingData.ControlSetting.BIsAutoPlay || (targetFrameData.HasValue && targetFrameData.Value.CurFrameType == FrameData.FrameType.Branch))
             && ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetMouseButtonDown(0) || m_curSelectedBranchIndex != -1))
@@ -214,46 +215,44 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Print))
-        {
-            m_animator_CameraFlash.Play("CameraFlash");
+        //if (Input.GetKeyDown(KeyCode.Print))
+        //{
+        //    string path = string.Empty;
+        //    switch (targetFrameData.Value.CurFrameType)
+        //    {
+        //        case FrameData.FrameType.Conversation:
+        //        case FrameData.FrameType.Branch:
+        //            path = System.IO.Path.Combine(Application.streamingAssetsPath,
+        //                    $"ScreenShots/Conversation/AlcoholFree_{DateTime.Now.Year}_{DateTime.Now.Hour}_{DateTime.Now.Minute}_{DateTime.Now.Second}.png");
+        //            break;
 
-            string path = string.Empty;
-            switch (targetFrameData.Value.CurFrameType)
-            {
-                case FrameData.FrameType.Conversation:
-                case FrameData.FrameType.Branch:
-                    path = System.IO.Path.Combine(Application.streamingAssetsPath,
-                            $"ScreenShots/Conversation/AlcoholFree_{DateTime.Now.Year}_{DateTime.Now.Hour}_{DateTime.Now.Minute}_{DateTime.Now.Second}.png");
-                    break;
+        //        case FrameData.FrameType.CutScene:
+        //            path = System.IO.Path.Combine(Application.streamingAssetsPath,
+        //                    $"ScreenShots/CutScene/AlcoholFree_{DateTime.Now.Year}_{DateTime.Now.Hour}_{DateTime.Now.Minute}_{DateTime.Now.Second}.png");
+        //            break;
+        //    }
 
-                case FrameData.FrameType.CutScene:
-                    path = System.IO.Path.Combine(Application.streamingAssetsPath,
-                            $"ScreenShots/CutScene/AlcoholFree_{DateTime.Now.Year}_{DateTime.Now.Hour}_{DateTime.Now.Minute}_{DateTime.Now.Second}.png");
-                    break;
-            }
+        //    string directory = System.IO.Path.GetDirectoryName(path);
+        //    if (!System.IO.Directory.Exists(directory))
+        //    {
+        //        System.IO.Directory.CreateDirectory(directory);
+        //    }
 
-            string directory = System.IO.Path.GetDirectoryName(path);
-            if (!System.IO.Directory.Exists(directory))
-            {
-                System.IO.Directory.CreateDirectory(directory);
-            }
-
-            if (m_renderTexture != null)
-            {
-                RenderTexture.active = m_renderTexture;
-                Texture2D screenShot = new Texture2D(m_renderTexture.width, m_renderTexture.height, TextureFormat.RGB24, false);
-                screenShot.ReadPixels(new Rect(0, 0, m_renderTexture.width, m_renderTexture.height), 0, 0);
-                screenShot.Apply();
-                byte[] bytes = screenShot.EncodeToPNG();
-                System.IO.File.WriteAllBytes(path, bytes);
-                Debug.Log($"Saved MiniGame Result Screen Shot to {path}");
-            }
-            else
-            {
-                Debug.LogError("Render Texture is not set!");
-            }
-        }
+        //    if (m_renderTexture != null)
+        //    {
+        //        RenderTexture.active = m_renderTexture;
+        //        Texture2D screenShot = new Texture2D(m_renderTexture.width, m_renderTexture.height, TextureFormat.RGB24, false);
+        //        screenShot.ReadPixels(new Rect(0, 0, m_renderTexture.width, m_renderTexture.height), 0, 0);
+        //        screenShot.Apply();
+        //        byte[] bytes = screenShot.EncodeToPNG();
+        //        System.IO.File.WriteAllBytes(path, bytes);
+        //        Debug.Log($"Saved MiniGame Result Screen Shot to {path}");
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("Render Texture is not set!");
+        //    }
+        //}
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -367,7 +366,31 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
 
     public void SkipAll()
     {
-        if (PlotDataBuffer.Instance.PlotData.Value.LinkTable[PlotDataInterface.FindInputLink(ChiefMainGameManager.Instance.CurSelectedSceneID)].FromLinkCondition.Value.CurEnterEventNodeLinkCondition.Value.EnterEventName.Contains("End"))
+        //if (PlotDataBuffer.Instance.PlotData.Value.LinkTable[PlotDataInterface.FindInputLink(ChiefMainGameManager.Instance.CurSelectedSceneID)].FromLinkCondition.Value.CurEnterEventNodeLinkCondition.Value.EnterEventName.Contains("End"))
+        //{
+        //    SceneManager.LoadScene("DemoEnd");
+        //}
+        //else
+        //{
+        //    SceneManager.LoadScene("MiniGame");
+        //}
+
+        SceneData curSceneData = PlotDataBuffer.Instance.GetSceneData(ChiefMainGameManager.Instance.CurSelectedSceneID);
+        if(curSceneData.SceneName.Contains("Tutorial")
+            || (PlotDataBuffer.Instance.PlotData.Value.LinkTable[PlotDataInterface.FindInputLink(ChiefMainGameManager.Instance.CurSelectedSceneID)].FromNodeID != PlotData.EnterEventNodeID
+                && PlotDataBuffer.Instance.PlotData.Value.LinkTable[PlotDataInterface.FindInputLink(ChiefMainGameManager.Instance.CurSelectedSceneID)].FromNodeID != PlotData.ScreenTransitionNodeID
+                && PlotDataBuffer.Instance.GetSceneData(PlotDataBuffer.Instance.PlotData.Value.LinkTable[PlotDataInterface.FindInputLink(ChiefMainGameManager.Instance.CurSelectedSceneID)].FromNodeID).SceneName.Contains("Tutorial")))
+        {
+            SceneManager.LoadScene("Map");
+        }
+        else if (curSceneData.SceneName.Contains(BackgroundResourceDesc.BackgroundType.Aquarium.ToString())
+                    || curSceneData.SceneName.Contains(BackgroundResourceDesc.BackgroundType.Park.ToString())
+                    || curSceneData.SceneName.Contains(BackgroundResourceDesc.BackgroundType.Mall.ToString())
+                    || curSceneData.SceneName.Contains(BackgroundResourceDesc.BackgroundType.School.ToString()))
+        {
+            SceneManager.LoadScene("Map");
+        }
+        else if (curSceneData.SceneName.Contains("BarResult"))
         {
             SceneManager.LoadScene("DemoEnd");
         }
@@ -397,8 +420,10 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
 
     public void TrySaveScreenShot()
     {
+        m_animator_CameraFlash.Play("CameraFlash");
+
         string path = string.Empty;
-        switch (curFrameData.Value.CurFrameType)
+        switch (m_curFrameData.Value.CurFrameType)
         {
             case FrameData.FrameType.CutScene:
                 path = System.IO.Path.Combine(Application.streamingAssetsPath, 
@@ -459,14 +484,14 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
         }
 
         SceneData targetSceneData = PlotDataBuffer.Instance.PlotData.Value.SceneTable[ChiefMainGameManager.Instance.CurSelectedSceneID];
-        curFrameData = targetSceneData.Frames.Count > 0 ? targetSceneData.Frames[ChiefMainGameManager.Instance.CurSelectedFrameIndex] : null;
+        m_curFrameData = targetSceneData.Frames.Count > 0 ? targetSceneData.Frames[ChiefMainGameManager.Instance.CurSelectedFrameIndex] : null;
 
         IScreenTranstion.TransitionKind transitionKind = IScreenTranstion.TransitionKind.None;
         bool bisEnterScreen = false;
         if (m_image_Background.sprite == null)
         {
             bisEnterScreen = true;
-            if (curFrameData.Value.CurFrameType == FrameData.FrameType.CutScene)
+            if (m_curFrameData.Value.CurFrameType == FrameData.FrameType.CutScene)
             {
                 transitionKind = IScreenTranstion.TransitionKind.Fade;
             }
@@ -477,19 +502,23 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
         }
         else
         {
-            if (curFrameData.Value.CurFrameType == FrameData.FrameType.CutScene
-                && m_image_Background.sprite != ResourceDescBuffer.Instance.CutSceneResourceDesc.CutSceneDatas[curFrameData.Value.CurBasicData.CurCutSceneData.CutSceneIndex].CurSceneSprite)
+            if (m_curFrameData.Value.CurFrameType == FrameData.FrameType.CutScene
+                && m_image_Background.sprite != ResourceDescBuffer.Instance.CutSceneResourceDesc.CutSceneDatas[m_curFrameData.Value.CurBasicData.CurCutSceneData.CutSceneIndex].CurSceneSprite)
             {
                 transitionKind = IScreenTranstion.TransitionKind.Fade;
             }
-            else if (curFrameData.Value.CurFrameType != FrameData.FrameType.CutScene
-                && m_image_Background.sprite != ResourceDescBuffer.Instance.GetBackgroundSprite(curFrameData.Value.CurBasicData.BackgroundType))
+            else if (m_curFrameData.Value.CurFrameType != FrameData.FrameType.CutScene
+                /*&& m_image_Background.sprite != ResourceDescBuffer.Instance.GetBackgroundSprite(curFrameData.Value.CurBasicData.BackgroundType)*/)
             {
-                transitionKind = IScreenTranstion.TransitionKind.Fade;
+                if(ChiefMainGameManager.Instance.CurSelectedFrameIndex - 1 >= 0
+                    && targetSceneData.Frames[ChiefMainGameManager.Instance.CurSelectedFrameIndex - 1].CurBasicData.BackgroundType != m_curFrameData.Value.CurBasicData.BackgroundType)
+                {
+                    transitionKind = IScreenTranstion.TransitionKind.Fade;
+                }
             }
         }
 
-        if (curFrameData.HasValue)
+        if (m_curFrameData.HasValue)
         {
             switch (transitionKind)
             {
@@ -522,7 +551,7 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
                     beforeTex.SetPixels(beforePixels);
                     beforeTex.Apply();
 
-                    var afterSprite = ResourceDescBuffer.Instance.CutSceneResourceDesc.CutSceneDatas[curFrameData.Value.CurBasicData.CurCutSceneData.CutSceneIndex].CurSceneSprite;
+                    var afterSprite = ResourceDescBuffer.Instance.CutSceneResourceDesc.CutSceneDatas[m_curFrameData.Value.CurBasicData.CurCutSceneData.CutSceneIndex].CurSceneSprite;
                     Texture2D afterTex = new Texture2D((int)afterSprite.rect.width, (int)afterSprite.rect.height);
                     var afterPixels = afterTex.GetPixels((int)afterSprite.textureRect.x,
                                                             (int)afterSprite.textureRect.y,
@@ -584,8 +613,7 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
         for (int index = 0; index < targetFrameData.CurBasicData.AppearCharacters.Count; index++)
         {
             if (targetFrameData.CurBasicData.AppearCharacters[index].Item1 == CharacterResourceDesc.CharacterListType.MainCharacter
-                || targetFrameData.CurBasicData.AppearCharacters[index].Item1 == CharacterResourceDesc.CharacterListType.Description
-                || targetFrameData.CurBasicData.AppearCharacters[index].Item1 == CharacterResourceDesc.CharacterListType.Librarian)
+                || targetFrameData.CurBasicData.AppearCharacters[index].Item1 == CharacterResourceDesc.CharacterListType.Description)
             {
                 realAppearCharactorCount--;
             }
@@ -639,6 +667,7 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
                         x = 0.5f,
                         y = ResourceDescBuffer.Instance.CharacterDisplayConfig.CharacterDisplayDatas[realAppearCharactorCount].PerCharacterImagePositionPivot[(int)targetFrameData.CurBasicData.AppearCharacters[index].Item1]
                     };
+                    m_rectTranform_Characters[index].localScale = ResourceDescBuffer.Instance.CharacterDisplayConfig.CharacterDisplayDatas[realAppearCharactorCount].PerCharacterImageScale[(int)targetFrameData.CurBasicData.AppearCharacters[index].Item1];
 
                     if (index == targetFrameData.CurBasicData.SpeakerCharacterIndex)
                     {
@@ -650,8 +679,7 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
                     }
 
                     if (targetFrameData.CurBasicData.AppearCharacters[index].Item1 != CharacterResourceDesc.CharacterListType.MainCharacter
-                        && targetFrameData.CurBasicData.AppearCharacters[index].Item1 != CharacterResourceDesc.CharacterListType.Description
-                        && targetFrameData.CurBasicData.AppearCharacters[index].Item1 != CharacterResourceDesc.CharacterListType.Librarian)
+                        && targetFrameData.CurBasicData.AppearCharacters[index].Item1 != CharacterResourceDesc.CharacterListType.Description)
                     {
                         m_image_Characters[index].gameObject.SetActive(true);
                     }
@@ -659,13 +687,26 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
             }
 
             //AudioClip targetBGMClip = MusicDataBuffer.Instance.TryGetCharacterMusic((CharacterResourceDesc.CharacterListType)targetFrameData.CurBasicData.SpeakerCharacterIndex, 0);
-            AudioClip targetBGMClip = ResourceDescBuffer.Instance.MusicResourceDesc.CharacterMusics[(int)targetFrameData.CurBasicData.CharacterThemeBGMCharacterType].CharacterMusicClips[0];
-            if (targetFrameData.CurBasicData.BIsUseCharacterThemeBGM
-                && m_audioSource_BGM.clip != targetBGMClip)
+            if ((int)targetFrameData.CurBasicData.CharacterThemeBGMCharacterType >= 0)
             {
-                m_audioSource_BGM.Stop();
-                m_audioSource_BGM.clip = targetBGMClip;
-                m_audioSource_BGM.Play();
+                AudioClip targetBGMClip = ResourceDescBuffer.Instance.MusicResourceDesc.CharacterMusics[(int)targetFrameData.CurBasicData.CharacterThemeBGMCharacterType].CharacterMusicClips[0];
+                if (targetFrameData.CurBasicData.BIsUseCharacterThemeBGM
+                    && m_audioSource_BGM.clip != targetBGMClip)
+                {
+                    m_audioSource_BGM.Stop();
+                    m_audioSource_BGM.clip = targetBGMClip;
+                    m_audioSource_BGM.Play();
+                }
+            }
+            else
+            {
+                AudioClip targetBGMClip = ResourceDescBuffer.Instance.MusicResourceDesc.BackgroundMusicClips[(int)targetFrameData.CurBasicData.BackgroundType];
+                if (m_audioSource_BGM.clip != targetBGMClip)
+                {
+                    m_audioSource_BGM.Stop();
+                    m_audioSource_BGM.clip = targetBGMClip;
+                    m_audioSource_BGM.Play();
+                }
             }
         }
         else
@@ -757,35 +798,56 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
                 }
                 else
                 {
-                    switch (curSceneData.SceneName)
+                    //switch (curSceneData.SceneName)
+                    //{
+                    //    //case "AbsintheEnd":
+                    //    //case "HayaseuraTokusenGinjoEnd":
+                    //    //case "KahluaEnd":
+                    //    //case "HpnotiqEnd":
+                    //    //case "CabernetSauvignonEnd":
+                    //    //    SceneManager.LoadScene("DemoEnd");
+                    //    //    break;
+
+                    //    //default:
+                    //    //    bool bisToMiniGame = true;
+                    //    //    if (PlotDataBuffer.Instance.PlotData.Value.LinkTable[PlotDataInterface.FindInputLink(ChiefMainGameManager.Instance.CurSelectedSceneID)].FromLinkCondition.Value.CurEnterEventNodeLinkCondition.HasValue)
+                    //    //    {
+                    //    //        if (PlotDataBuffer.Instance.PlotData.Value.LinkTable[PlotDataInterface.FindInputLink(ChiefMainGameManager.Instance.CurSelectedSceneID)].FromLinkCondition.Value.CurEnterEventNodeLinkCondition.Value.EnterEventName.Contains("End"))
+                    //    //        {
+                    //    //            bisToMiniGame = false;
+                    //    //        }
+                    //    //    }
+
+                    //    //    if (!bisToMiniGame)
+                    //    //    {
+                    //    //        SceneManager.LoadScene("DemoEnd");
+                    //    //    }
+                    //    //    else
+                    //    //    {
+                    //    //        SceneManager.LoadScene("MiniGame");
+                    //    //    }
+                    //    //    break;
+                    //}
+
+                    if (curSceneData.SceneName.Contains("Tutorial"))
                     {
-                        case "AbsintheEnd":
-                        case "HayaseuraTokusenGinjoEnd":
-                        case "KahluaEnd":
-                        case "HpnotiqEnd":
-                        case "CabernetSauvignonEnd":
-                            SceneManager.LoadScene("DemoEnd");
-                            break;
-
-                        default:
-                            bool bisToMiniGame = true;
-                            if (PlotDataBuffer.Instance.PlotData.Value.LinkTable[PlotDataInterface.FindInputLink(ChiefMainGameManager.Instance.CurSelectedSceneID)].FromLinkCondition.Value.CurEnterEventNodeLinkCondition.HasValue)
-                            {
-                                if (PlotDataBuffer.Instance.PlotData.Value.LinkTable[PlotDataInterface.FindInputLink(ChiefMainGameManager.Instance.CurSelectedSceneID)].FromLinkCondition.Value.CurEnterEventNodeLinkCondition.Value.EnterEventName.Contains("End"))
-                                {
-                                    bisToMiniGame = false;
-                                }
-                            }
-
-                            if (!bisToMiniGame)
-                            {
-                                SceneManager.LoadScene("DemoEnd");
-                            }
-                            else
-                            {
-                                SceneManager.LoadScene("MiniGame");
-                            }
-                            break;
+                        SceneManager.LoadScene("Map");
+                    }
+                    else if (curSceneData.SceneName.Contains(BackgroundResourceDesc.BackgroundType.Aquarium.ToString())
+                                || curSceneData.SceneName.Contains(BackgroundResourceDesc.BackgroundType.Park.ToString())
+                                || curSceneData.SceneName.Contains(BackgroundResourceDesc.BackgroundType.Mall.ToString())
+                                || curSceneData.SceneName.Contains(BackgroundResourceDesc.BackgroundType.School.ToString())
+                                || curSceneData.SceneName.Contains(BackgroundResourceDesc.BackgroundType.Gallery.ToString()))
+                    {
+                        SceneManager.LoadScene("Map");
+                    }
+                    else if (curSceneData.SceneName.Contains("BarResult"))
+                    {
+                        SceneManager.LoadScene("DemoEnd");
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("MiniGame");
                     }
                 }
             }
@@ -805,35 +867,62 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
 
     private void RenderContent()
     {
-        m_image_Background.sprite = ResourceDescBuffer.Instance.GetBackgroundSprite(curFrameData.Value.CurBasicData.BackgroundType);
+        m_image_Background.sprite = ResourceDescBuffer.Instance.GetBackgroundSprite(m_curFrameData.Value.CurBasicData.BackgroundType);
+        switch(m_curFrameData.Value.CurBasicData.BackgroundEffect)
+        {
+            case FrameData.BasicData.BackgroundEffectTyoe.None:
+                m_gameObject_BackgroundBlur.SetActive(false);
+                break;
+
+            case FrameData.BasicData.BackgroundEffectTyoe.Blur:
+                m_gameObject_BackgroundBlur.SetActive(true);
+                break;
+        }
 
         m_transform_CharacterParent.gameObject.SetActive(false);
         m_transform_BranchParent.gameObject.SetActive(false);
         m_transform_ConversationParent.gameObject.SetActive(false);
 
-        switch (curFrameData.Value.CurFrameType)
+        switch (m_curFrameData.Value.CurFrameType)
         {
             case FrameData.FrameType.Conversation:
                 {
-                    RenderCharacters(curFrameData.Value);
+                    RenderCharacters(m_curFrameData.Value);
                     m_transform_CharacterParent.gameObject.SetActive(true);
 
                     m_transform_BranchParent.gameObject.SetActive(false);
 
-                    string speakText = "{fade}" + curFrameData.Value.CurBasicData.CurConversationData.SpeakText + "{/fade}";
-                    if (curFrameData.Value.CurBasicData.AppearCharacters.Count > 0)
+                    string speakText = "{fade}" + m_curFrameData.Value.CurBasicData.CurConversationData.SpeakText + "{/fade}";
+                    if (m_curFrameData.Value.CurBasicData.AppearCharacters.Count > 0)
                     {
-                        CharacterResourceDesc.CharacterListType curSpeakCharacter = curFrameData.Value.CurBasicData.AppearCharacters[curFrameData.Value.CurBasicData.SpeakerCharacterIndex].Item1;
-                        if (curSpeakCharacter == CharacterResourceDesc.CharacterListType.MainCharacter)
+                        CharacterResourceDesc.CharacterListType curSpeakCharacter = m_curFrameData.Value.CurBasicData.AppearCharacters[m_curFrameData.Value.CurBasicData.SpeakerCharacterIndex].Item1;
+                        if (m_curFrameData.Value.CurBasicData.BisDisplaySpeakerName)
                         {
-                            m_text_Name.text = m_mainCharacterName;
+                            if (curSpeakCharacter == CharacterResourceDesc.CharacterListType.MainCharacter)
+                            {
+                                m_text_Name.text = m_mainCharacterName;
+                            }
+                            else
+                            {
+                                m_text_Name.text = ResourceDescBuffer.Instance.GetCharacterResourceDesc(curSpeakCharacter).CharacterName;
+                            }
                         }
                         else
                         {
-                            m_text_Name.text = ResourceDescBuffer.Instance.GetCharacterResourceDesc(curSpeakCharacter).CharacterName;
+                            m_text_Name.text = "???";
                         }
                         speakText = speakText.Replace("<Player>", m_mainCharacterName);
                     }
+
+                    if (m_curFrameData.Value.CurBasicData.CurConversationData.BIsBold)
+                    {
+                        m_text_SpeakText.fontSize = SettingDataBuffer.Instance.SettingData.ControlSetting.FontSize * 1.5f;
+                    }
+                    else
+                    {
+                        m_text_SpeakText.fontSize = SettingDataBuffer.Instance.SettingData.ControlSetting.FontSize;
+                    }
+
                     m_text_SpeakText.text = speakText;
                     m_transform_ConversationParent.gameObject.SetActive(true);
 
@@ -843,15 +932,15 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
 
             case FrameData.FrameType.Branch:
                 {
-                    RenderCharacters(curFrameData.Value);
+                    RenderCharacters(m_curFrameData.Value);
                     m_transform_CharacterParent.gameObject.SetActive(true);
 
                     for (int index = 0; index < m_image_Branches.Length; index++)
                     {
                         m_image_Branches[index].gameObject.SetActive(false);
-                        if (index < curFrameData.Value.CurBasicData.CurBranchData.BranchTransitionTargets.Count)
+                        if (index < m_curFrameData.Value.CurBasicData.CurBranchData.BranchTransitionTargets.Count)
                         {
-                            m_image_Branches[index].transform.GetChild(0).GetComponent<TMP_Text>().text = curFrameData.Value.CurBasicData.CurBranchData.BranchTransitionTargets[index];
+                            m_image_Branches[index].transform.GetChild(0).GetComponent<TMP_Text>().text = m_curFrameData.Value.CurBasicData.CurBranchData.BranchTransitionTargets[index];
                             m_image_Branches[index].gameObject.SetActive(true);
                         }
                     }
@@ -868,14 +957,14 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
                     //RenderCharacters(targetFrameData.Value);
                     //m_transform_CharacterParent.gameObject.SetActive(true);
 
-                    m_image_Background.sprite = ResourceDescBuffer.Instance.CutSceneResourceDesc.CutSceneDatas[curFrameData.Value.CurBasicData.CurCutSceneData.CutSceneIndex].CurSceneSprite;
+                    m_image_Background.sprite = ResourceDescBuffer.Instance.CutSceneResourceDesc.CutSceneDatas[m_curFrameData.Value.CurBasicData.CurCutSceneData.CutSceneIndex].CurSceneSprite;
 
                     m_transform_BranchParent.gameObject.SetActive(false);
 
-                    string speakText = "{fade}" + curFrameData.Value.CurBasicData.CurConversationData.SpeakText + "{/fade}";
-                    if (curFrameData.Value.CurBasicData.AppearCharacters.Count > 0)
+                    string speakText = "{fade}" + m_curFrameData.Value.CurBasicData.CurConversationData.SpeakText + "{/fade}";
+                    if (m_curFrameData.Value.CurBasicData.AppearCharacters.Count > 0)
                     {
-                        CharacterResourceDesc.CharacterListType curSpeakCharacter = curFrameData.Value.CurBasicData.AppearCharacters[curFrameData.Value.CurBasicData.SpeakerCharacterIndex].Item1;
+                        CharacterResourceDesc.CharacterListType curSpeakCharacter = m_curFrameData.Value.CurBasicData.AppearCharacters[m_curFrameData.Value.CurBasicData.SpeakerCharacterIndex].Item1;
                         if (curSpeakCharacter == CharacterResourceDesc.CharacterListType.MainCharacter)
                         {
                             m_text_Name.text = m_mainCharacterName;
@@ -891,7 +980,7 @@ public class NoonCanvasControl : SingleTonForGameObject<NoonCanvasControl>
                         }
                     }
                     m_text_SpeakText.text = speakText;
-                    if (!string.IsNullOrEmpty(curFrameData.Value.CurBasicData.CurConversationData.SpeakText))
+                    if (!string.IsNullOrEmpty(m_curFrameData.Value.CurBasicData.CurConversationData.SpeakText))
                     {
                         m_transform_ConversationParent.gameObject.SetActive(true);
                     }

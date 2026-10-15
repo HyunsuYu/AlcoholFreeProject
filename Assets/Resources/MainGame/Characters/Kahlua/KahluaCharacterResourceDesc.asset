@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: KahluaCharacterResourceDesc
   m_EditorClassIdentifier: 
   CharacterSprites:
-  - {fileID: 21300000, guid: 04104a5a41fa6754ca48be25de0f074c, type: 3}
-  - {fileID: 21300000, guid: 4942a76b81e08374595328bc24c89d24, type: 3}
-  - {fileID: 21300000, guid: 7e50aef4a4faf1146b8117848f41eca0, type: 3}
-  - {fileID: 21300000, guid: d5e9dbb9b1deb274382eabe673d0c4a1, type: 3}
-  - {fileID: 21300000, guid: 25a7c25d2c208834db927f79020f7740, type: 3}
-  - {fileID: 21300000, guid: 83e5da330f96e9548874f8b714934804, type: 3}
-  - {fileID: 21300000, guid: 55a1e7e1fabe37348a066ab6d80ae298, type: 3}
+  - {fileID: 21300000, guid: db6b0bd7151d71a4ca3beada233e6dfc, type: 3}
+  - {fileID: 21300000, guid: 7442756c8d8e95644b092fb181490c5d, type: 3}
+  - {fileID: 21300000, guid: 7682d3d36e0f94844b06cb2a0ca375c7, type: 3}
+  - {fileID: 21300000, guid: 7a46f468ecc2d3d489d4a887bf50e37c, type: 3}
+  - {fileID: 21300000, guid: 8e9d394761c735f449d73fcae7023a76, type: 3}
+  - {fileID: 21300000, guid: 408b4ab56a086f94fa03bf0fb0029308, type: 3}
+  - {fileID: 21300000, guid: 0090d7cdc4d56dd459fc8f88409ee5fb, type: 3}
   CharacterName: "\uAC15\uB85C\uC544"

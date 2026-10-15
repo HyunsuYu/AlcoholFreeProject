@@ -39,11 +39,11 @@ public sealed class ChiefSettingManager : SingleTonForGameObject<ChiefSettingMan
     {
         RenderAll();
 
-        GameObject bgm = GameObject.Find("BGM");
-        if(bgm != null)
-        {
-            Destroy(bgm);
-        }
+        //GameObject bgm = GameObject.Find("BGM");
+        //if(bgm != null)
+        //{
+        //    Destroy(bgm);
+        //}
     }
 
     internal static FromPageType FromPage
@@ -119,6 +119,7 @@ public sealed class ChiefSettingManager : SingleTonForGameObject<ChiefSettingMan
             case FromPageType.Conversation:
                 SceneManager.LoadScene("Conversation");
                 NoonCanvasControl.Request2Render(m_fromSceneID, m_fromFrameIndex);
+                Invoke(nameof(RenderConversationScreen), 1.0f);
                 break;
 
             case FromPageType.RecipeSelection:
@@ -142,5 +143,10 @@ public sealed class ChiefSettingManager : SingleTonForGameObject<ChiefSettingMan
     protected override void Dispose(bool bisDisposing)
     {
         throw new NotImplementedException();
+    }
+
+    private void RenderConversationScreen()
+    {
+        NoonCanvasControl.Instance.Render();
     }
 }

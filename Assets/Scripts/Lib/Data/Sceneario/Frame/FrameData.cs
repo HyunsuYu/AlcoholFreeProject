@@ -21,9 +21,16 @@ public struct FrameData
 
     public struct BasicData
     {
+        public enum BackgroundEffectTyoe
+        {
+            None,
+            Blur
+        }
+
         public struct ConversationData
         {
             public string SpeakText;
+            public bool BIsBold;
         }
         public struct BranchData
         {
@@ -36,6 +43,7 @@ public struct FrameData
 
 
         public BackgroundResourceDesc.BackgroundType BackgroundType;
+        public BackgroundEffectTyoe BackgroundEffect;
 
         public bool BIsUseCharacterThemeBGM;
         public CharacterResourceDesc.CharacterListType CharacterThemeBGMCharacterType;
@@ -44,6 +52,7 @@ public struct FrameData
 
         public List<Tuple<CharacterResourceDesc.CharacterListType, CharacterResourceDesc.CharacterPoseType>> AppearCharacters;
         public int SpeakerCharacterIndex;
+        public bool BisDisplaySpeakerName;
 
         public ConversationData CurConversationData;
         public BranchData CurBranchData;

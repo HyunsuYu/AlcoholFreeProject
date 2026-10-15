@@ -11,6 +11,7 @@ using static SceneOpenPopup;
 public class EmulationCanvasControl : SingleTonForGameObject<EmulationCanvasControl>
 {
     [SerializeField] private Image m_image_Background;
+    [SerializeField] private GameObject m_gameObject_BackgroundBlur;
 
     [Header("Conversation")]
     [SerializeField] private Transform m_transform_ConversationParent;
@@ -61,6 +62,16 @@ public class EmulationCanvasControl : SingleTonForGameObject<EmulationCanvasCont
         if (targetFrameData.HasValue)
         {
             m_image_Background.sprite = ResourceDescBuffer.Instance.GetBackgroundSprite(targetFrameData.Value.CurBasicData.BackgroundType);
+            switch(targetFrameData.Value.CurBasicData.BackgroundEffect)
+            {
+                case FrameData.BasicData.BackgroundEffectTyoe.None:
+                    m_gameObject_BackgroundBlur.SetActive(false);
+                    break;
+
+                case FrameData.BasicData.BackgroundEffectTyoe.Blur:
+                    m_gameObject_BackgroundBlur.SetActive(true);
+                    break;
+            }
 
             m_transform_CharacterParent.gameObject.SetActive(false);
             m_transform_BranchParent.gameObject.SetActive(false);
@@ -79,15 +90,31 @@ public class EmulationCanvasControl : SingleTonForGameObject<EmulationCanvasCont
                         if (targetFrameData.Value.CurBasicData.AppearCharacters.Count > 0)
                         {
                             CharacterResourceDesc.CharacterListType curSpeakCharacter = targetFrameData.Value.CurBasicData.AppearCharacters[targetFrameData.Value.CurBasicData.SpeakerCharacterIndex].Item1;
-                            if (curSpeakCharacter == CharacterResourceDesc.CharacterListType.MainCharacter)
+                            if (targetFrameData.Value.CurBasicData.BisDisplaySpeakerName)
                             {
-                                m_text_Name.text = NoonCanvasControl.MainCharacterName;
+                                if (curSpeakCharacter == CharacterResourceDesc.CharacterListType.MainCharacter)
+                                {
+                                    m_text_Name.text = NoonCanvasControl.MainCharacterName;
+                                }
+                                else
+                                {
+                                    m_text_Name.text = ResourceDescBuffer.Instance.GetCharacterResourceDesc(curSpeakCharacter).CharacterName;
+                                }
                             }
                             else
                             {
-                                m_text_Name.text = ResourceDescBuffer.Instance.GetCharacterResourceDesc(curSpeakCharacter).CharacterName;
+                                m_text_Name.text = "???";
                             }
                             speakText = speakText.Replace("<Player>", NoonCanvasControl.MainCharacterName);
+                        }
+
+                        if (targetFrameData.Value.CurBasicData.CurConversationData.BIsBold)
+                        {
+                            m_text_SpeakText.fontSize = SettingDataBuffer.Instance.SettingData.ControlSetting.FontSize * 1.5f;
+                        }
+                        else
+                        {
+                            m_text_SpeakText.fontSize = SettingDataBuffer.Instance.SettingData.ControlSetting.FontSize;
                         }
 
                         m_text_SpeakText.text = speakText;
@@ -177,8 +204,7 @@ public class EmulationCanvasControl : SingleTonForGameObject<EmulationCanvasCont
         for (int index = 0; index < targetFrameData.CurBasicData.AppearCharacters.Count; index++)
         {
             if (targetFrameData.CurBasicData.AppearCharacters[index].Item1 == CharacterResourceDesc.CharacterListType.MainCharacter
-                || targetFrameData.CurBasicData.AppearCharacters[index].Item1 == CharacterResourceDesc.CharacterListType.Description
-                || targetFrameData.CurBasicData.AppearCharacters[index].Item1 == CharacterResourceDesc.CharacterListType.Librarian)
+                || targetFrameData.CurBasicData.AppearCharacters[index].Item1 == CharacterResourceDesc.CharacterListType.Description)
             {
                 realAppearCharactorCount--;
             }
@@ -243,8 +269,7 @@ public class EmulationCanvasControl : SingleTonForGameObject<EmulationCanvasCont
                     }
 
                     if (targetFrameData.CurBasicData.AppearCharacters[index].Item1 != CharacterResourceDesc.CharacterListType.MainCharacter
-                        && targetFrameData.CurBasicData.AppearCharacters[index].Item1 != CharacterResourceDesc.CharacterListType.Description
-                        && targetFrameData.CurBasicData.AppearCharacters[index].Item1 != CharacterResourceDesc.CharacterListType.Librarian)
+                        && targetFrameData.CurBasicData.AppearCharacters[index].Item1 != CharacterResourceDesc.CharacterListType.Description)
                     {
                         m_image_Characters[index].gameObject.SetActive(true);
                     }

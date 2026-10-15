@@ -35,7 +35,7 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
 
     [SerializeField] private TMP_Text m_text_RecipeName;
 
-    [SerializeField] private Sprite[] m_sprite_RecipeResults;
+    //[SerializeField] private Sprite[] m_sprite_RecipeResults;
     [SerializeField] private Image m_image_RecipeResult;
 
     [SerializeField] private Animator m_animator_CameraFlash;
@@ -58,18 +58,24 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
     [SerializeField] private GameObject m_layout_RecipePopup;
     [SerializeField] private Image m_image_Recipe;
 
-    private static bool m_bisInit = false;
+    //private static bool m_bisInit = false;
     private static InventoryControl.ItemType[] m_liqurePlaceholderTable = new InventoryControl.ItemType[4];
 
     [SerializeField] private GameObject m_gameObject_GlassBtn;
     [SerializeField] private GameObject m_gameObject_ShakerBtn;
 
+    private int m_recipeResultStar = -1;
+
     [Header("Selected Liqure Mouse Effect")]
     [SerializeField] private RectTransform m_rectTransform_SelectedLiqureMouseIcon;
     [SerializeField] private Image m_image_SelectedLiqureMouseIcon;
     [SerializeField] private Animator m_animator_SelectedLiqureMouseIcon;
+
     private int m_curSelectedLiqurePlaceholderIndex = -1;
     private int m_prevSelectedLiqurePlaceholderIndex = -1;
+
+    private InventoryControl.ItemType m_curSelectedLiqure = InventoryControl.ItemType.None;
+    private InventoryControl.ItemType m_prevSelectedLiqure = InventoryControl.ItemType.None;
 
     [Header("Liqure Fall")]
     [SerializeField] private GameObject m_prefab_MetaballItem;
@@ -141,8 +147,8 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
 
         //m_image_Recipe.sprite = MiniGameItemResourceInterface.Instance.GetRecipeData(m_curRecipe).Background;
 
-        if(m_bisInit)
-        {
+        //if(m_bisInit)
+        //{
             m_layout_TutorialPopup.SetActive(false);
 
             if(m_curGlassItem != null)
@@ -162,25 +168,85 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
             }
 
             RecipeSelectionControl.Instance.Render();
-        }
+        //}
     }
     public void Update()
     {
-        if(!m_bisInit)
-        {
-            return;
-        }
+        //if(!m_bisInit)
+        //{
+        //    return;
+        //}
 
         #region Liqure Hold
-        if (m_curSelectedLiqurePlaceholderIndex != -1)
+        #region Legacy
+        //if (m_curSelectedLiqurePlaceholderIndex != -1)
+        //{
+        //    m_rectTransform_SelectedLiqureMouseIcon.anchoredPosition = Input.mousePosition - new Vector3(960.0f, 540.0f, 0.0f);
+
+        //    if(Input.GetMouseButtonDown(1))
+        //    {
+        //        CurSelectedLiqurePlaceholderIndex = -1;
+        //    }
+
+
+        //    if (Input.GetMouseButtonDown(0))
+        //    {
+        //        m_ballDropTimer = 0.0f;
+        //        m_image_SelectedLiqureMouseIcon.GetComponent<RectTransform>().rotation = Quaternion.Euler(Vector3.zero);
+        //        m_animator_SelectedLiqureMouseIcon.Play("MouseLiqureHolder_StartPour");
+        //        m_animator_SelectedLiqureMouseIcon.ResetTrigger("StopPour");
+        //    }
+        //    else if (Input.GetMouseButton(0) && m_animator_SelectedLiqureMouseIcon.GetCurrentAnimatorStateInfo(0).IsName("MouseLiqureHolder_Pouring"))
+        //    {
+        //        m_ballDropTimer += Time.deltaTime;
+        //        if (m_ballDropTimer >= m_ballDropDistance)
+        //        {
+        //            m_metaballTransforms.Add(m_metaballPool.Get());
+        //            m_ballDropTimer = 0.0f;
+        //        }
+        //    }
+        //    else if(Input.GetMouseButtonUp(0))
+        //    {
+        //        m_animator_SelectedLiqureMouseIcon.SetTrigger("StopPour");
+        //    }
+        //}
+        //if (m_metaballTransforms.Count > 0)
+        //{
+        //    Vector4[] poses = new Vector4[20];
+        //    for (int index = 0; index < m_metaballTransforms.Count; index++)
+        //    {
+        //        if (index >= poses.Length)
+        //        {
+        //            break;
+        //        }
+
+        //        poses[index] = new Vector4()
+        //        {
+        //            x = (m_metaballTransforms[index].position.x + m_posMidifier.x / 2.0f) / m_posMidifier.x / 2.0f + 0.25f,
+        //            y = (m_metaballTransforms[index].position.y + m_posMidifier.y / 2.0f) / m_posMidifier.y / 2.0f + 0.25f,
+        //            z = 0.0f,
+        //            w = 0.0f
+        //        };
+        //    }
+
+        //    m_metaballMat.SetVectorArray("_MetaballPoses", poses);
+        //}
+        //m_metaballMat.SetInteger("_MetaballPosCount", m_metaballTransforms.Count);
+        //if(m_curSelectedLiqurePlaceholderIndex >= 0)
+        //{
+        //    m_metaballMat.SetVector("_Color", MiniGameItemResourceInterface.Instance.GetItemWaveColor(InventoryControl.Instance.InventoryLiqurePlaceholders[m_curSelectedLiqurePlaceholderIndex].CurItemType)[0]);
+        //}
+        #endregion
+
+        #region New
+        if (m_curSelectedLiqure != InventoryControl.ItemType.None)
         {
             m_rectTransform_SelectedLiqureMouseIcon.anchoredPosition = Input.mousePosition - new Vector3(960.0f, 540.0f, 0.0f);
 
-            if(Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
-                CurSelectedLiqurePlaceholderIndex = -1;
+                CurSelectedLiqure = InventoryControl.ItemType.None;
             }
-
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -198,7 +264,7 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
                     m_ballDropTimer = 0.0f;
                 }
             }
-            else if(Input.GetMouseButtonUp(0))
+            else if (Input.GetMouseButtonUp(0))
             {
                 m_animator_SelectedLiqureMouseIcon.SetTrigger("StopPour");
             }
@@ -225,10 +291,11 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
             m_metaballMat.SetVectorArray("_MetaballPoses", poses);
         }
         m_metaballMat.SetInteger("_MetaballPosCount", m_metaballTransforms.Count);
-        if(m_curSelectedLiqurePlaceholderIndex >= 0)
+        if (m_curSelectedLiqure != InventoryControl.ItemType.None)
         {
-            m_metaballMat.SetVector("_Color", MiniGameItemResourceInterface.Instance.GetItemWaveColor(InventoryControl.Instance.InventoryLiqurePlaceholders[m_curSelectedLiqurePlaceholderIndex].CurItemType)[0]);
+            m_metaballMat.SetVector("_Color", MiniGameItemResourceInterface.Instance.GetItemWaveColor(m_curSelectedLiqure)[0]);
         }
+        #endregion
         #endregion
 
         if (m_bisMiniGameFinished && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
@@ -242,26 +309,122 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
             {
                 Destroy(miniGameBGMObject);
             }
-            switch (ChiefCharacterSelectionManager.CurSelectedCharacterType)
+
+            //switch (ChiefCharacterSelectionManager.CurSelectedCharacterType)
+            //{
+            //    case CharacterResourceDesc.CharacterListType.Absinthe:
+            //        ChiefMainGameManager.Instance.Render("AbsintheEnd");
+            //        break;
+
+            //    case CharacterResourceDesc.CharacterListType.HayaseuraTokusenGinjo:
+            //        ChiefMainGameManager.Instance.Render("HayaseuraTokusenGinjoEnd");
+            //        break;
+
+            //    case CharacterResourceDesc.CharacterListType.Kahlua:
+            //        ChiefMainGameManager.Instance.Render("KahluaEnd");
+            //        break;
+
+            //    case CharacterResourceDesc.CharacterListType.Hpnotiq:
+            //        ChiefMainGameManager.Instance.Render("HpnotiqEnd");
+            //        break;
+
+            //    case CharacterResourceDesc.CharacterListType.CabernetSauvignon:
+            //        ChiefMainGameManager.Instance.Render("CabernetSauvignonEnd");
+            //        break;
+            //}
+
+            switch(m_recipeResultStar)
             {
-                case CharacterResourceDesc.CharacterListType.Absinthe:
-                    ChiefMainGameManager.Instance.Render("AbsintheEnd");
+                case 1:
+                    switch(m_curRecipe)
+                    {
+                        case RecipeSelectionControl.RecipeType.DeathInTheAfternoon:
+                        case RecipeSelectionControl.RecipeType.Absinthe:
+                            ChiefMainGameManager.Instance.Render("Absinthe_BarResult_Bad");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.BlackRussian:
+                        case RecipeSelectionControl.RecipeType.FlatWhiteRussian:
+                            ChiefMainGameManager.Instance.Render("Kahlua_BarResult_Bad");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.Calimocho:
+                        case RecipeSelectionControl.RecipeType.SplitzerLuge:
+                            ChiefMainGameManager.Instance.Render("CabernetSauvignon_BarResult_Bad");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.HipKiss:
+                        case RecipeSelectionControl.RecipeType.IncredibleHulk:
+                            ChiefMainGameManager.Instance.Render("Hpnotiq_BarResult_Bad");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.Saketini:
+                        case RecipeSelectionControl.RecipeType.SamuraiRock:
+                            ChiefMainGameManager.Instance.Render("HayaseuraTokusenGinjo_BarResult_Bad");
+                            break;
+                    }
                     break;
 
-                case CharacterResourceDesc.CharacterListType.HayaseuraTokusenGinjo:
-                    ChiefMainGameManager.Instance.Render("HayaseuraTokusenGinjoEnd");
+                case 2:
+                case 3:
+                    switch (m_curRecipe)
+                    {
+                        case RecipeSelectionControl.RecipeType.DeathInTheAfternoon:
+                        case RecipeSelectionControl.RecipeType.Absinthe:
+                            ChiefMainGameManager.Instance.Render("Absinthe_BarResult_Common");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.BlackRussian:
+                        case RecipeSelectionControl.RecipeType.FlatWhiteRussian:
+                            ChiefMainGameManager.Instance.Render("Kahlua_BarResult_Common");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.Calimocho:
+                        case RecipeSelectionControl.RecipeType.SplitzerLuge:
+                            ChiefMainGameManager.Instance.Render("CabernetSauvignon_BarResult_Common");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.HipKiss:
+                        case RecipeSelectionControl.RecipeType.IncredibleHulk:
+                            ChiefMainGameManager.Instance.Render("Hpnotiq_BarResult_Common");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.Saketini:
+                        case RecipeSelectionControl.RecipeType.SamuraiRock:
+                            ChiefMainGameManager.Instance.Render("HayaseuraTokusenGinjo_BarResult_Common");
+                            break;
+                    }
                     break;
 
-                case CharacterResourceDesc.CharacterListType.Kahlua:
-                    ChiefMainGameManager.Instance.Render("KahluaEnd");
-                    break;
+                case 4:
+                case 5:
+                    switch (m_curRecipe)
+                    {
+                        case RecipeSelectionControl.RecipeType.DeathInTheAfternoon:
+                        case RecipeSelectionControl.RecipeType.Absinthe:
+                            ChiefMainGameManager.Instance.Render("Absinthe_BarResult_Good");
+                            break;
 
-                case CharacterResourceDesc.CharacterListType.Hpnotiq:
-                    ChiefMainGameManager.Instance.Render("HpnotiqEnd");
-                    break;
+                        case RecipeSelectionControl.RecipeType.BlackRussian:
+                        case RecipeSelectionControl.RecipeType.FlatWhiteRussian:
+                            ChiefMainGameManager.Instance.Render("Kahlua_BarResult_Good");
+                            break;
 
-                case CharacterResourceDesc.CharacterListType.CabernetSauvignon:
-                    ChiefMainGameManager.Instance.Render("CabernetSauvignonEnd");
+                        case RecipeSelectionControl.RecipeType.Calimocho:
+                        case RecipeSelectionControl.RecipeType.SplitzerLuge:
+                            ChiefMainGameManager.Instance.Render("CabernetSauvignon_BarResult_Good");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.HipKiss:
+                        case RecipeSelectionControl.RecipeType.IncredibleHulk:
+                            ChiefMainGameManager.Instance.Render("Hpnotiq_BarResult_Good");
+                            break;
+
+                        case RecipeSelectionControl.RecipeType.Saketini:
+                        case RecipeSelectionControl.RecipeType.SamuraiRock:
+                            ChiefMainGameManager.Instance.Render("HayaseuraTokusenGinjo_BarResult_Good");
+                            break;
+                    }
                     break;
             }
         }
@@ -310,13 +473,13 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
                     {
                         Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                        if (targetPos.x <= -4.0f)
+                        if (targetPos.x <= -3.0f)
                         {
-                            targetPos.x = -4.0f;
+                            targetPos.x = -3.0f;
                         }
-                        else if (targetPos.x >= 0.0f)
+                        else if (targetPos.x >= 5.0f)
                         {
-                            targetPos.x = 0.0f;
+                            targetPos.x = 5.0f;
                         }
 
                         if (-1.6f <= targetPos.y)
@@ -358,7 +521,7 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
         if(m_curSelectedBottle != null)
         {
             //Debug.Log($"bisOnShader: {bisOnShaker}, bisOnGlass: {bisOnGlass}, CurGlassItem: {m_curGlassItem != null}, BIsShader: {m_curSelectedBottle.BisShaker}");
-            if (bisOnShaker && bisOnGlass && m_curGlassItem != null && m_curSelectedBottle.BisShaker && Input.GetMouseButtonDown(1))
+            if (bisOnShaker && bisOnGlass && m_curGlassItem != null && m_curSelectedBottle.BisShaker && m_curShakerItem.AddedIngredients.Count > 0 && Input.GetMouseButtonDown(1))
             {
                 m_curGlassItem.AddIngredient(InventoryControl.ItemType.Shaker);
                 m_curGlassItem.AddIngredientWaveScale();
@@ -376,6 +539,10 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
         get
         {
             return m_curRecipe;
+        }
+        set
+        {
+            m_curRecipe = value;
         }
     }
 
@@ -440,6 +607,37 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
             }
         }
     }
+    internal InventoryControl.ItemType CurSelectedLiqure
+    {
+        get
+        {
+            return m_curSelectedLiqure;
+        }
+        set
+        {
+            m_prevSelectedLiqure = m_curSelectedLiqure;
+            m_curSelectedLiqure = value;
+            if(m_prevSelectedLiqure == InventoryControl.ItemType.None)
+            {
+                m_prevSelectedLiqure = m_curSelectedLiqure;
+            }
+
+            if(m_curSelectedLiqure == InventoryControl.ItemType.None)
+            {
+                m_image_SelectedLiqureMouseIcon.sprite = null;
+                m_rectTransform_SelectedLiqureMouseIcon.gameObject.SetActive(false);
+
+                m_curPourCount = 0;
+            }
+            else
+            {
+                m_image_SelectedLiqureMouseIcon.sprite = MiniGameItemResourceInterface.Instance.GetItemTitleSprite(m_curSelectedLiqure);
+                m_rectTransform_SelectedLiqureMouseIcon.gameObject.SetActive(true);
+
+                m_animator_SelectedLiqureMouseIcon.GetComponent<RectTransform>().rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+        }
+    }
 
     internal static InventoryControl.ItemType[] LiqurePlaceholderTable
     {
@@ -456,10 +654,10 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
     #region Unity Callbacks
     public void Reset()
     {
-        if(!m_bisInit)
-        {
-            return;
-        }
+        //if(!m_bisInit)
+        //{
+        //    return;
+        //}
 
         SceneManager.LoadScene("MiniGame");
 
@@ -483,10 +681,10 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
     }
     public void CompleteMaking()
     {
-        if (!m_bisInit)
-        {
-            return;
-        }
+        //if (!m_bisInit)
+        //{
+        //    return;
+        //}
 
         if (m_curGlassItem != null)
         {
@@ -586,7 +784,7 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
             m_layout_Result.SetActive(true);
             
             m_text_RecipeName.text = recipeData.Name;
-            m_image_RecipeResult.sprite = m_sprite_RecipeResults[(int)m_curRecipe];
+            //m_image_RecipeResult.sprite = m_sprite_RecipeResults[(int)m_curRecipe];
 
             if (!bisFailed)
             {
@@ -595,11 +793,11 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
 
                 //m_text_Score.text = $"Score: {score * 100.0f:F2}";
 
-                int scoreIconCount = (int)Mathf.Lerp(1, m_gameObject_ScoreIcons.Length, score);
-                Debug.Log($"Score Icon Count: {scoreIconCount}");
+                m_recipeResultStar = (int)Mathf.Lerp(1, m_gameObject_ScoreIcons.Length, score);
+                Debug.Log($"Score Icon Count: {m_recipeResultStar}");
                 for (int index = 0; index < m_gameObject_ScoreIcons.Length; index++)
                 {
-                    if (index < scoreIconCount)
+                    if (index < m_recipeResultStar)
                     {
                         Invoke(nameof(PlayResultScoreIconAnimation), index * m_scoreIconAnimationDelay);
                     }
@@ -608,7 +806,7 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
                         m_gameObject_ScoreIcons[index].SetActive(false);
                     }
                 }
-                Invoke(nameof(SetMiniGameFinished), scoreIconCount * m_scoreIconAnimationDelay);
+                Invoke(nameof(SetMiniGameFinished), m_recipeResultStar * m_scoreIconAnimationDelay);
 
                 Debug.Log("Recipe Success! Score: " + score);
 
@@ -622,7 +820,8 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
 
                 //m_text_Score.text = $"Score: {score * 100.0f:F2}";
 
-                foreach(GameObject scoreIcon in m_gameObject_ScoreIcons)
+                m_recipeResultStar = 1;
+                foreach (GameObject scoreIcon in m_gameObject_ScoreIcons)
                 {
                     scoreIcon.SetActive(false);
                 }
@@ -636,6 +835,23 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
                 m_image_StampBackground.sprite = m_sprite_Stamps[1];
             }
 
+            switch(m_recipeResultStar)
+            {
+                case 1:
+                    m_image_RecipeResult.sprite = MiniGameItemResourceInterface.Instance.GetRecipeData(m_curRecipe).ResultSprites[0];
+                    break;
+
+                case 2:
+                case 3:
+                    m_image_RecipeResult.sprite = MiniGameItemResourceInterface.Instance.GetRecipeData(m_curRecipe).ResultSprites[1];
+                    break;
+
+                case 4:
+                case 5:
+                    m_image_RecipeResult.sprite = MiniGameItemResourceInterface.Instance.GetRecipeData(m_curRecipe).ResultSprites[2];
+                    break;
+            }
+
             Invoke(nameof(PlatResultStampSFX), m_stampSFXTiming);
         }
 
@@ -643,10 +859,10 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
     }
     public void TrySaveResultScreenShot()
     {
-        if (!m_bisInit)
-        {
-            return;
-        }
+        //if (!m_bisInit)
+        //{
+        //    return;
+        //}
 
         m_animator_CameraFlash.Play("CameraFlash");
 
@@ -762,13 +978,15 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
 
     internal void Init()
     {
-        m_curRecipe = RecipeSelectionControl.CurRecipeType;
+        //m_curRecipe = RecipeSelectionControl.CurRecipeType;
 
         RenderAll();
 
         m_image_Recipe.sprite = MiniGameItemResourceInterface.Instance.GetRecipeData(m_curRecipe).Background;
 
-        m_bisInit = true;
+        //m_bisInit = true;
+
+        Debug.Log(m_curRecipe);
     }
 
     internal void RenderAll()
@@ -799,7 +1017,7 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
 
     internal void ResetStatic()
     {
-        m_curRecipe = RecipeSelectionControl.RecipeType.DeathInTheAfternoon;
+        //m_curRecipe = RecipeSelectionControl.RecipeType.DeathInTheAfternoon;
         
         m_curSelectedBottle = null;
         m_curGlassItem = null;
@@ -807,7 +1025,7 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
 
         m_bottles.Clear();
 
-        m_bisInit = false;
+        //m_bisInit = false;
         m_liqurePlaceholderTable = new InventoryControl.ItemType[4];
     }
 
@@ -815,6 +1033,11 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
     {
         m_metaballPool.Release(item);
         m_metaballTransforms.Remove(item);
+
+        if(m_curSelectedBottle == null)
+        {
+            return;
+        }
 
         if (bisAddLiqure)
         {
@@ -826,8 +1049,11 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
 
                     if (m_curPourCount >= m_pourItemThreshold)
                     {
-                        m_curSelectedBottle.AddIngredient(InventoryControl.Instance.InventoryLiqurePlaceholders[m_prevSelectedLiqurePlaceholderIndex].CurItemType);
+                        //m_curSelectedBottle.AddIngredient(InventoryControl.Instance.InventoryLiqurePlaceholders[m_prevSelectedLiqurePlaceholderIndex].CurItemType);
+                        m_curSelectedBottle.AddIngredient(m_prevSelectedLiqure);
                         m_curPourCount = 0;
+
+                        BarReceiptControl.Instance.AddItem(m_prevSelectedLiqure);
                     }
                 }
             }
@@ -839,8 +1065,11 @@ public sealed class ChiefMiniGameManager : SingleTonForGameObject<ChiefMiniGameM
 
                     if (m_curPourCount >= m_pourItemThreshold)
                     {
-                        m_curSelectedBottle.AddIngredient(InventoryControl.Instance.InventoryLiqurePlaceholders[m_prevSelectedLiqurePlaceholderIndex].CurItemType);
+                        //m_curSelectedBottle.AddIngredient(InventoryControl.Instance.InventoryLiqurePlaceholders[m_prevSelectedLiqurePlaceholderIndex].CurItemType);
+                        m_curSelectedBottle.AddIngredient(m_prevSelectedLiqure);
                         m_curPourCount = 0;
+
+                        BarReceiptControl.Instance.AddItem(m_prevSelectedLiqure);
                     }
                 }
             }

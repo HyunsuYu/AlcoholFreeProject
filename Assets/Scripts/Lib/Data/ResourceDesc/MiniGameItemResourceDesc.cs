@@ -13,6 +13,8 @@ public class MiniGameItemResourceDesc : ScriptableObject
         public string Name;
         public Sprite[] sprites;
 
+        public int Price;
+
         public string Description;
 
         public Color AdditionBarColor;
@@ -54,6 +56,8 @@ public class MiniGameItemResourceDesc : ScriptableObject
 
         public Sprite Background;
         public Color ThemeColor;
+
+        public Sprite[] ResultSprites;
     }
 
 

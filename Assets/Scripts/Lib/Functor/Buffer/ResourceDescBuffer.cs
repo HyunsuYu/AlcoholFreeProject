@@ -22,15 +22,6 @@ public sealed class ResourceDescBuffer : SingleTonForGameObject<ResourceDescBuff
         SetInstance(this);
     }
 
-    internal Sprite GetBackgroundSprite(in BackgroundResourceDesc.BackgroundType backgroundType)
-    {
-        if (m_backgroundResourceDesc == null)
-        {
-            throw new System.NullReferenceException("BackgroundResourceDesc is null.");
-        }
-
-        return m_backgroundResourceDesc.BackgroundSprites[(int)backgroundType];
-    }
     internal CutSceneResourceDesc CutSceneResourceDesc
     {
         get
@@ -52,6 +43,25 @@ public sealed class ResourceDescBuffer : SingleTonForGameObject<ResourceDescBuff
         {
             return m_characterDisplayConfig;
         }
+    }
+
+    internal Sprite GetBackgroundSprite(in BackgroundResourceDesc.BackgroundType backgroundType)
+    {
+        if (m_backgroundResourceDesc == null)
+        {
+            throw new System.NullReferenceException("BackgroundResourceDesc is null.");
+        }
+
+        return m_backgroundResourceDesc.BackgroundSprites[(int)backgroundType];
+    }
+    internal string GetBackgroundName(in BackgroundResourceDesc.BackgroundType backgroundType)
+    {
+        if (m_backgroundResourceDesc == null)
+        {
+            throw new System.NullReferenceException("BackgroundResourceDesc is null.");
+        }
+
+        return m_backgroundResourceDesc.BackgorundNames[(int)backgroundType];
     }
 
     internal CharacterResourceDesc GetCharacterResourceDesc(in CharacterResourceDesc.CharacterListType characterListType)

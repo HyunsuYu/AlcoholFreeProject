@@ -10,16 +10,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterResourceDesc", menuName = "ResourceDesc/CharacterResourceDesc", order = 1)]
 public sealed class CharacterResourceDesc : ScriptableObject
 {
-    public enum CharacterListType : byte
+    public enum CharacterListType
     {
+        None = -1,
         Absinthe = 0,
         CabernetSauvignon = 1,
         HayaseuraTokusenGinjo = 2,
         Hpnotiq = 3,
         Kahlua = 4,
+
         MainCharacter = 5,
         Description = 6,
         Librarian = 7,
+        Ticket = 8,
+
+        Absinthe_Silhouette = 9,
+        CabernetSauvignon_Silhouette = 10,
+        HayaseuraTokusenGinjo_Silhouette = 11,
+        Hpnotiq_Silhouette = 12,
+        Kahlua_Silhouette = 13
     }
     public enum CharacterPoseType : byte
     {

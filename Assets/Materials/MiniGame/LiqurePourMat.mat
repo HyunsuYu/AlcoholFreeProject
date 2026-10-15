@@ -45,7 +45,7 @@ Material:
     - _MinCut: 0.985
     - _Radius: 9224
     m_Colors:
-    - _Color: {r: 0.8666667, g: 1, b: 0.96862745, a: 0.5019608}
+    - _Color: {r: 0.5803922, g: 0.11372549, b: 0.30588236, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: HpnotiqCharacterResourceDesc
   m_EditorClassIdentifier: 
   CharacterSprites:
-  - {fileID: 21300000, guid: a070c77691b2ac245bb4617f556fae8b, type: 3}
-  - {fileID: 21300000, guid: 85d1f40b18ade3f4db1ecb19f3ac1799, type: 3}
-  - {fileID: 21300000, guid: c0c491341a31c13468c10692eb58bc7f, type: 3}
-  - {fileID: 21300000, guid: 71831fab894966946aa41d698a5bea30, type: 3}
-  - {fileID: 21300000, guid: bc1ebd2c35b4bb145823ce866c51ddc1, type: 3}
-  - {fileID: 21300000, guid: 8720f5c68ad55a44fb4c377c72b07f21, type: 3}
-  - {fileID: 21300000, guid: 0f9499d63e66c8a4b9ddae2784a705cf, type: 3}
+  - {fileID: 21300000, guid: 0bcbca288d40bd243b6cf84576f2814b, type: 3}
+  - {fileID: 21300000, guid: 28f519c84a1026645b7896066ce65836, type: 3}
+  - {fileID: 21300000, guid: 58ab2886925d1d849ae8744dd8d48a0d, type: 3}
+  - {fileID: 21300000, guid: 7f51caddfe2792b478aa848bf627894f, type: 3}
+  - {fileID: 21300000, guid: d31d85bb64b721d4e8c7b321875a86a3, type: 3}
+  - {fileID: 21300000, guid: aaef7477e1c6ed44bab18b21b25ca429, type: 3}
+  - {fileID: 21300000, guid: 705bc4230014f5c47b8c638167760db8, type: 3}
   CharacterName: "\uD0C0\uCE58\uBC14\uB098 \uD5EC\uB808\uB098"

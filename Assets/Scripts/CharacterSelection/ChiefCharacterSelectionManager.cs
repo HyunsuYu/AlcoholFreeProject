@@ -146,6 +146,11 @@ public sealed class ChiefCharacterSelectionManager : SingleTonForGameObject<Chie
     }
     public void OpenTutorial()
     {
+        if(m_inputField_MainCharacterName.text == string.Empty)
+        {
+            return;
+        }
+
         Invoke(nameof(OpenTutorialWithDelay), 0.5f);
     }
     #endregion
@@ -157,35 +162,37 @@ public sealed class ChiefCharacterSelectionManager : SingleTonForGameObject<Chie
 
     private void OpenTutorialWithDelay()
     {
-        //ChiefMainGameManager.Instance.Render("Tutorial");
-        switch (m_curSelectedCharacterType)
-        {
-            case CharacterResourceDesc.CharacterListType.Absinthe:
-                //m_selectedCharacter = "Absinthe";
-                ChiefMainGameManager.Instance.Render("Absinthe");
-                break;
+        ////ChiefMainGameManager.Instance.Render("Tutorial");
+        //switch (m_curSelectedCharacterType)
+        //{
+        //    case CharacterResourceDesc.CharacterListType.Absinthe:
+        //        //m_selectedCharacter = "Absinthe";
+        //        ChiefMainGameManager.Instance.Render("Absinthe");
+        //        break;
 
-            case CharacterResourceDesc.CharacterListType.HayaseuraTokusenGinjo:
-                //m_selectedCharacter = "HayaseuraTokusenGinjo";
-                ChiefMainGameManager.Instance.Render("HayaseuraTokusenGinjo");
-                break;
+        //    case CharacterResourceDesc.CharacterListType.HayaseuraTokusenGinjo:
+        //        //m_selectedCharacter = "HayaseuraTokusenGinjo";
+        //        ChiefMainGameManager.Instance.Render("HayaseuraTokusenGinjo");
+        //        break;
 
-            case CharacterResourceDesc.CharacterListType.Kahlua:
-                //m_selectedCharacter = "Kahlua";
-                ChiefMainGameManager.Instance.Render("Kahlua");
-                break;
+        //    case CharacterResourceDesc.CharacterListType.Kahlua:
+        //        //m_selectedCharacter = "Kahlua";
+        //        ChiefMainGameManager.Instance.Render("Kahlua");
+        //        break;
 
-            case CharacterResourceDesc.CharacterListType.Hpnotiq:
-                //m_selectedCharacter = "Hpnotiq";
-                ChiefMainGameManager.Instance.Render("Hpnotiq");
-                break;
+        //    case CharacterResourceDesc.CharacterListType.Hpnotiq:
+        //        //m_selectedCharacter = "Hpnotiq";
+        //        ChiefMainGameManager.Instance.Render("Hpnotiq");
+        //        break;
 
-            case CharacterResourceDesc.CharacterListType.CabernetSauvignon:
-                //m_selectedCharacter = "CabernetSauvignon";
-                ChiefMainGameManager.Instance.Render("CabernetSauvignon");
-                break;
-        }
+        //    case CharacterResourceDesc.CharacterListType.CabernetSauvignon:
+        //        //m_selectedCharacter = "CabernetSauvignon";
+        //        ChiefMainGameManager.Instance.Render("CabernetSauvignon");
+        //        break;
+        //}
 
         Destroy(GameObject.Find("BGM"));
+
+        ChiefMainGameManager.Instance.Render("Tutorial");
     }
 }

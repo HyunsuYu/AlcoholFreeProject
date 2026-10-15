@@ -50,7 +50,7 @@ public sealed class TitleButtonControl : MonoBehaviour
         //MusicDataBuffer.Instance.PreloadMusicDatas();
 
         GameObject targetBGMObject = GameObject.Find("BGM");
-        if(targetBGMObject == null)
+        if (targetBGMObject == null)
         {
             targetBGMObject = m_audioSource_BGM.gameObject;
         }

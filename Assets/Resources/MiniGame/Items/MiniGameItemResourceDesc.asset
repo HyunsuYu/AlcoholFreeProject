@@ -16,6 +16,7 @@ MonoBehaviour:
   - Name: "\uC555\uC0DD\uD2B8"
     sprites:
     - {fileID: -1518099438, guid: fcc9756164bde3240b0416c81f2e7704, type: 3}
+    Price: 0
     Description: "\uC465 \uD5A5\uC774 \uAC15\uD558\uACE0 \uB3C4\uC218\uAC00     
       \uB192\uC740 \uCD08\uB85D\uC0C9 \uC220\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.1882353, g: 0.6784314, b: 0.1882353, a: 0.9019608}
@@ -26,6 +27,7 @@ MonoBehaviour:
   - Name: "\uAE54\uB8E8\uC544"
     sprites:
     - {fileID: 860907853, guid: fcc9756164bde3240b0416c81f2e7704, type: 3}
+    Price: 1000
     Description: "\uB2EC\uCF64\uD55C \uCEE4\uD53C \uB9DB                 \uB9AC\uD050\uC5B4\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.3137255, g: 0.19598365, b: 0.13725491, a: 0.9019608}
     FrontTopColor: {r: 0.42745098, g: 0.2, b: 0, a: 1}
@@ -35,6 +37,7 @@ MonoBehaviour:
   - Name: "\uB4DC\uB77C\uC774 \uC9C4"
     sprites:
     - {fileID: 21300000, guid: 434389dc62d5f904e820a75d206b9eb1, type: 3}
+    Price: 0
     Description: "\uD5A5\uAE0B\uD55C \uC8FC\uB2C8\uD37C(\uC194\uC5F4\uB9E4)      
       \uD5A5\uC774 \uB098\uB294                           \uC2A4\uD53C\uB9BF\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.8836478, g: 1, b: 0.9753607, a: 0.9019608}
@@ -45,6 +48,7 @@ MonoBehaviour:
   - Name: "\uBCF4\uB4DC\uCE74"
     sprites:
     - {fileID: 21300000, guid: c300ca3c27447de42be2161f91ceaa4b, type: 3}
+    Price: 0
     Description: "\uB9DB\uACFC \uD5A5\uC774 \uAC70\uC758 \uC5C6\uC5B4        \uB2E4\uB978
       \uC7AC\uB8CC\uC640 \uC11E\uAE30 \uC88B\uC740        \uD22C\uBA85\uD55C \uC220\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.74253386, g: 0.9182909, b: 0.9559748, a: 0.9019608}
@@ -55,6 +59,7 @@ MonoBehaviour:
   - Name: "\uCF54\uB0D1"
     sprites:
     - {fileID: 21300000, guid: 4b54eaad867931b4cb3fd4e456c9fb0e, type: 3}
+    Price: 0
     Description: "\uD3EC\uB3C4\uC8FC\uB97C \uC99D\uB958\uD574              \uC624\uD06C\uD1B5\uC5D0
       \uC219\uC131\uD55C            \uD5A5 \uC88B\uC740 \uBE0C\uB79C\uB514\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.5529412, g: 0.21176471, b: 0.22745098, a: 0.9019608}
@@ -65,6 +70,7 @@ MonoBehaviour:
   - Name: "\uC0AC\uCF00"
     sprites:
     - {fileID: 1851481251, guid: fcc9756164bde3240b0416c81f2e7704, type: 3}
+    Price: 0
     Description: "\uC300\uB85C \uB9CC\uB4E0 \uC77C\uBCF8 \uC220\uB85C,         \uAE54\uB054\uD558\uACE0
       \uBD80\uB4DC\uB7FD\uC2B5\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.88235295, g: 1, b: 0.6784314, a: 0.9019608}
@@ -75,6 +81,7 @@ MonoBehaviour:
   - Name: "\uD799\uB178\uD2F1"
     sprites:
     - {fileID: -280801106, guid: fcc9756164bde3240b0416c81f2e7704, type: 3}
+    Price: 0
     Description: "\uBC1D\uC740 \uD30C\uB780\uC0C9\uC758                       \uB2EC\uCF64\uD55C
       \uACFC\uC77C\uB9DB \uB9AC\uD050\uC5B4\uB85C                           \uD2B8\uB85C\uD53C\uCEEC\uD568\uC774
       \uD2B9\uC9D5\uC785\uB2C8\uB2E4."
@@ -86,6 +93,7 @@ MonoBehaviour:
   - Name: "\uB808\uB4DC \uC640\uC778"
     sprites:
     - {fileID: -1752590709, guid: fcc9756164bde3240b0416c81f2e7704, type: 3}
+    Price: 0
     Description: "\uC9C4\uD558\uACE0 \uB5AB\uC740\uB9DB(\uD0C4\uB2CC)\uC774      
       \uB290\uAEF4\uC9C0\uB294 \uB808\uB4DC\uC640\uC778         \uD3EC\uB3C4 \uD488\uC885\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.5803922, g: 0.11372549, b: 0.30588236, a: 0.9019608}
@@ -96,6 +104,7 @@ MonoBehaviour:
   - Name: "\uC0F4\uD398\uC778"
     sprites:
     - {fileID: 1988413748, guid: fcc9756164bde3240b0416c81f2e7704, type: 3}
+    Price: 0
     Description: "\uD1A1\uD1A1 \uD130\uC9C0\uB294 \uD0C4\uC0B0\uC758          \uD504\uB791\uC2A4
       \uC2A4\uD30C\uD074\uB9C1           \uC640\uC778\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.9764706, g: 0.9098039, b: 0.7019608, a: 0.9019608}
@@ -107,6 +116,7 @@ MonoBehaviour:
   - Name: "\uBB3C"
     sprites:
     - {fileID: 21300000, guid: 36a3b49e31d84d742b9257c71222c523, type: 3}
+    Price: 0
     Description: "\uB3C4\uC218\uB97C \uB0AE\uCD94\uACE0                 \uB9DB\uC744
       \uBD80\uB4DC\uB7FD\uAC8C \uD574 \uC8FC\uB294                       \uAE30\uBCF8
       \uC7AC\uB8CC\uC785\uB2C8\uB2E4."
@@ -118,6 +128,7 @@ MonoBehaviour:
   - Name: "\uC6B0\uC720"
     sprites:
     - {fileID: 21300000, guid: 1c1dcf2c4a752a144b2a951ff7c6ba12, type: 3}
+    Price: 0
     Description: "\uC74C\uB8CC\uC5D0 \uBD80\uB4DC\uB7EC\uC6C0\uACFC               
       \uACE0\uC18C\uD568\uC744 \uB354\uD574\uC8FC\uB294                   \uAE30\uBCF8
       \uC7AC\uB8CC\uC785\uB2C8\uB2E4."
@@ -129,6 +140,7 @@ MonoBehaviour:
   - Name: "\uC5D0\uC2A4\uD504\uB808\uC18C"
     sprites:
     - {fileID: 21300000, guid: 853f60882886b5f4db209eba5147d18f, type: 3}
+    Price: 0
     Description: "\uC544\uC8FC \uC9C4\uD558\uACE0 \uC9E7\uAC8C                  
       \uBF51\uC740 \uCEE4\uD53C\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.14465404, g: 0.09375692, b: 0.066868365, a: 0.9019608}
@@ -139,6 +151,7 @@ MonoBehaviour:
   - Name: "\uD0C4\uC0B0\uC218"
     sprites:
     - {fileID: 21300000, guid: 73ec8f14f89000143b86159d0e527e41, type: 3}
+    Price: 0
     Description: "\uAE30\uD3EC\uAC00 \uC788\uB294 \uBB3C\uB85C,                    
       \uC11E\uC73C\uBA74 \uD1A1 \uC3D8\uB294 \uCCAD\uB7C9\uAC10\uACFC                       
       \uAC00\uBCBC\uC6C0\uC744 \uB354\uD574 \uC90D\uB2C8\uB2E4."
@@ -150,6 +163,7 @@ MonoBehaviour:
   - Name: "\uCF5C\uB77C"
     sprites:
     - {fileID: 21300000, guid: 70674de3a62a5b64bae7590dd8771d23, type: 3}
+    Price: 0
     Description: "\uB2EC\uCF64\uD558\uACE0 \uD1A1 \uC3D8\uB294                       
       \uB300\uD45C\uC801\uC778 \uD0C4\uC0B0\uC74C\uB8CC\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.29559743, g: 0.07901184, b: 0.07901184, a: 0.9019608}
@@ -160,6 +174,7 @@ MonoBehaviour:
   - Name: "\uBC00\uAE30\uC2A4"
     sprites:
     - {fileID: 21300000, guid: 9b6cf96bc58baa34a8be71957e47ee06, type: 3}
+    Price: 0
     Description: "\uC6B0\uC720 \uB9DB\uC774 \uB098\uB294                  \uB2EC\uCF64\uD55C
       \uD0C4\uC0B0\uC74C\uB8CC\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.74509805, g: 0.94509804, b: 1, a: 0.9019608}
@@ -171,6 +186,7 @@ MonoBehaviour:
   - Name: "\uAC01\uC124\uD0D5"
     sprites:
     - {fileID: 21300000, guid: ab6ec17d252674b458c1323c908b2451, type: 3}
+    Price: 0
     Description: "\uC794\uC5D0\uC11C \uC73C\uAE68\uAC70\uB098                   \uB179\uC5EC
       \uB2EC\uD070\uD568\uC744 \uB354\uD560 \uB54C                   \uC0AC\uC6A9\uD569\uB2C8\uB2E4."
     AdditionBarColor: {r: 1, g: 1, b: 1, a: 0.9019608}
@@ -181,6 +197,7 @@ MonoBehaviour:
   - Name: "\uB77C\uC784 \uC8FC\uC2A4"
     sprites:
     - {fileID: 21300000, guid: a674976fddad9c9479dd99752884b04c, type: 3}
+    Price: 0
     Description: "\uD1A1 \uC3D8\uB294 \uC0B0\uBBF8\uB85C                        \uB9DB\uC744
       \uB610\uB837\uD558\uAC8C \uB9CC\uB4DC\uB294                          \uAE30\uBCF8
       \uC8FC\uC2A4\uC785\uB2C8\uB2E4."
@@ -193,6 +210,7 @@ MonoBehaviour:
   - Name: "\uB808\uBAAC \uC2AC\uB77C\uC774\uC2A4"
     sprites:
     - {fileID: 21300000, guid: 76f076d90c348b94b80654c6724c15d9, type: 3}
+    Price: 0
     Description: "\uC587\uAC8C \uC36C \uB808\uBAAC \uC870\uAC01\uC73C\uB85C                         
       \uD5A5\uACFC \uC0C9\uC744 \uB354\uD569\uB2C8\uB2E4."
     AdditionBarColor: {r: 1, g: 0.972549, b: 0.0627451, a: 0.9019608}
@@ -203,6 +221,7 @@ MonoBehaviour:
   - Name: "\uC62C\uB9AC\uBE0C \uAF2C\uCE58"
     sprites:
     - {fileID: 21300000, guid: 343445f03dbcf23478a11e6e3ada112a, type: 3}
+    Price: 200
     Description: "\uC62C\uB9AC\uBE0C\uB97C \uAF2C\uCE58\uC5D0 \uAF42\uC544                        
       \uC62C\uB9AC\uB294 \uC7A5\uC2DD\uC73C\uB85C,                          \uB9C8\uD2F0\uB2C8\uC5D0
       \uC790\uC8FC \uC501\uB2C8\uB2E4."
@@ -214,6 +233,7 @@ MonoBehaviour:
   - Name: "\uB77C\uC784 \uC2AC\uB77C\uC774\uC2A4"
     sprites:
     - {fileID: 21300000, guid: 9b20466814b690c478a64a727e35753a, type: 3}
+    Price: 0
     Description: "\uC587\uAC8C \uC36C \uB77C\uC784 \uC870\uAC01\uC73C\uB85C                      
       \uC0C1\uD07C\uD568\uACFC \uCD08\uB85D \uC0C9\uAC10\uC744                       
       \uB354\uD569\uB2C8\uB2E4."
@@ -225,6 +245,7 @@ MonoBehaviour:
   - Name: "\uAC01\uC124\uD0D5 \uC62C\uB9B0 \uC740\uC218\uC800"
     sprites:
     - {fileID: 21300000, guid: 39630532d91b7f44f8bfc25a4f98eb17, type: 3}
+    Price: 0
     Description: "\uC555\uC0DD\uD2B8 \uB4F1\uC5D0\uC11C                        \uC124\uD0D5\uC744
       \uB179\uC5EC                          \uD48D\uBBF8\uB97C \uB354\uD560 \uB54C
       \uC4F0\uB294                               \uC804\uC6A9 \uC21F\uAC00\uB77D\uC785\uB2C8\uB2E4."
@@ -238,6 +259,7 @@ MonoBehaviour:
     sprites:
     - {fileID: 21300000, guid: 0fad49ffa9e0b224ab85333242dc36c4, type: 3}
     - {fileID: 21300000, guid: a1b521d40e5d1de4ebcade4cc7617d43, type: 3}
+    Price: 0
     Description: "\uC555\uC0DD\uD2B8\uB97C \uBB3C\uACFC                   \uD0C0
       \uB9C8\uC2E4 \uB54C \uC4F0\uB294                 \uC804\uC6A9 \uC794\uC785\uB2C8\uB2E4."
     AdditionBarColor: {r: 0, g: 0, b: 0, a: 0}
@@ -249,6 +271,7 @@ MonoBehaviour:
     sprites:
     - {fileID: 21300000, guid: 424b2eb034c9de640b728f7883627daf, type: 3}
     - {fileID: 21300000, guid: 24d7803a6d259174bb6ee8d5d274fd8a, type: 3}
+    Price: 0
     Description: "\uB0AE\uACE0 \uB450\uAEBC\uC6B4 \uC794\uC73C\uB85C,                           
       \uB2E4\uC591\uD55C \uC220\uC5D0 \uD65C\uC6A9\uB429\uB2C8\uB2E4.                     
       \uC8FC\uB85C \uC704\uC2A4\uD0A4\uB97C \uC0AC\uC6A9\uD569\uB2C8\uB2E4."
@@ -261,6 +284,7 @@ MonoBehaviour:
     sprites:
     - {fileID: 21300000, guid: d3b64218915dd344bb4e7295cd9459d0, type: 3}
     - {fileID: 21300000, guid: c02ad5aa64d649b47872d75b41a87a00, type: 3}
+    Price: 0
     Description: "V\uC790 \uBAA8\uC591\uC758 \uC587\uC740 \uC794\uC73C\uB85C,                     
       \uCC28\uAC00\uC6B4 \uCE75\uD14C\uC77C\uC744 \uB2F4\uC2B5\uB2C8\uB2E4."
     AdditionBarColor: {r: 0, g: 0, b: 0, a: 0}
@@ -272,6 +296,7 @@ MonoBehaviour:
     sprites:
     - {fileID: 21300000, guid: a476fcc1851640d4a80e34862cd6e337, type: 3}
     - {fileID: 21300000, guid: a6df1f86ec715ec46a91496be9f1d6a6, type: 3}
+    Price: 0
     Description: "\uBCFC\uC774 \uD070 \uC794\uC73C\uB85C,                \uD5A5\uC744
       \uC798 \uBAA8\uC544                   \uB808\uB4DC\uC640\uC778 \uB9C8\uC2DC\uAE30
       \uC88B\uC2B5\uB2C8\uB2E4."
@@ -284,6 +309,7 @@ MonoBehaviour:
     sprites:
     - {fileID: 21300000, guid: 57c81bcd7e3202642b4d0f8c341ebc45, type: 3}
     - {fileID: 21300000, guid: 0efa0a0d25de37c4893a0d0f0d84c61c, type: 3}
+    Price: 0
     Description: "\uAE38\uACE0 \uACE7\uC740 \uC794\uC73C\uB85C,                 
       \uC5BC\uC74C\xB7\uD0C4\uC0B0 \uB123\uB294                        \uAE34 \uC74C\uB8CC\uC5D0
       \uC501\uB2C8\uB2E4."
@@ -296,6 +322,7 @@ MonoBehaviour:
     sprites:
     - {fileID: 21300000, guid: 7529dfa7cdea89c4fbb26e4c3c8d9bf6, type: 3}
     - {fileID: 21300000, guid: 059a2d024080a8d47964d04323c7c0cc, type: 3}
+    Price: 0
     Description: "\uB450\uAECD\uACE0 \uB0AE\uC740 \uC794\uC73C\uB85C,                     
       \uD070 \uC5BC\uC74C \uB123\uC740 \uC704\uC2A4\uD0A4\uB098                      
       \uD074\uB798\uC2DD \uCE75\uD14C\uC77C\uC5D0 \uC88B\uC2B5\uB2C8\uB2E4."
@@ -305,9 +332,10 @@ MonoBehaviour:
     BackTopColor: {r: 0, g: 0, b: 0, a: 0}
     BackBottomColor: {r: 0, g: 0, b: 0, a: 0}
   IceItems:
-  - Name: "\uC5BC\uC74C"
+  - Name: "\uAC01 \uC5BC\uC74C"
     sprites:
     - {fileID: 21300000, guid: f407dac47b5471043bd479ce232b1309, type: 3}
+    Price: 0
     Description: "\uC791\uACE0 \uB124\uBAA8\uB09C \uC5BC\uC74C\uC73C\uB85C,                       
       \uC250\uC774\uD0B9\uC774\uB098 \uD558\uC774\uBCFC\uC5D0 \uC368\uC11C                          
       \uC74C\uB8CC\uB97C \uBE68\uB9AC \uCC28\uAC11\uAC8C \uD558\uACE0                               
@@ -320,6 +348,7 @@ MonoBehaviour:
   - Name: "\uBC14 \uC5BC\uC74C"
     sprites:
     - {fileID: 21300000, guid: 5c98d767634b5434b9dc8e1cd47b7261, type: 3}
+    Price: 0
     Description: "\uBC14\uC5D0\uC11C \uD070 \uD22C\uBA85 \uC5BC\uC74C\uC744                            
       \uC798\uB77C \uB9CC\uB4E0 \uC5BC\uC74C\uC73C\uB85C,                          
       \uB179\uB294 \uC18D\uB3C4\uAC00 \uB290\uB9BD\uB2C8\uB2E4."
@@ -328,9 +357,10 @@ MonoBehaviour:
     FrontBottomColor: {r: 0, g: 0, b: 0, a: 0}
     BackTopColor: {r: 0, g: 0, b: 0, a: 0}
     BackBottomColor: {r: 0, g: 0, b: 0, a: 0}
-  - Name: "\uAD6C \uC5BC\uC74C"
+  - Name: "\uC6D0\uD615 \uC5BC\uC74C"
     sprites:
     - {fileID: 21300000, guid: bc59c49712356cc49abae5f4b7db0080, type: 3}
+    Price: 0
     Description: "\uB3D9\uADF8\uB780 \uC5BC\uC74C\uC73C\uB85C,                           
       \uC624\uB798\uAC00\uACE0 \uBCF4\uAE30 \uC88B\uC2B5\uB2C8\uB2E4."
     AdditionBarColor: {r: 0.7921569, g: 0.78431374, b: 1, a: 0.9019608}
@@ -341,6 +371,7 @@ MonoBehaviour:
   - Name: "\uC0AC\uAC01 \uC5BC\uC74C"
     sprites:
     - {fileID: 21300000, guid: 757d1ec5b5caff740b0933a214bfaffa, type: 3}
+    Price: 0
     Description: "\uD07C\uC9C1\uD55C \uB124\uBAA8 \uC5BC\uC74C\uC73C\uB85C,                           
       \uC704\uC2A4\uD0A4\xB7\uC628\uB354\uB77D\uC5D0 \uC790\uC8FC                            
       \uC0AC\uC6A9\uD569\uB2C8\uB2E4."
@@ -353,6 +384,7 @@ MonoBehaviour:
   - Name: "\uC250\uC774\uD0B9 \uC794"
     sprites:
     - {fileID: -294460841, guid: fcc9756164bde3240b0416c81f2e7704, type: 3}
+    Price: 0
     Description: "\uC5BC\uC74C\uACFC \uC7AC\uB8CC\uB97C                            
       \uB123\uACE0 \uD754\uB4E4\uC5B4                             \uCE75\uD14C\uC77C\uC744
       \uBE60\uB974\uACE0 \uCC28\uAC11\uAC8C                            \uC11E\uC744
@@ -366,6 +398,7 @@ MonoBehaviour:
   - Name: "\uC2A4\uD47C\uC73C\uB85C \uC813\uAE30"
     sprites:
     - {fileID: 21300000, guid: 54cbbefc7e7298441acf208f43412c63, type: 3}
+    Price: 0
     Description: "\uBC14 \uC2A4\uD47C\uC73C\uB85C \uC5BC\uC74C\uACFC \uD568\uAED8                      
       \uCC9C\uCC9C\uD788 \uC800\uC5B4 \uB9D1\uACE0                     \uBD80\uB4DC\uB7FD\uAC8C
       \uC11E\uB294                               \uBC29\uBC95\uC785\uB2C8\uB2E4."
@@ -377,6 +410,7 @@ MonoBehaviour:
   - Name: "\uD754\uB4E4\uAE30"
     sprites:
     - {fileID: 21300000, guid: be640aa431229c74d8f01518c91fed4a, type: 3}
+    Price: 0
     Description: "\uC250\uC774\uCEE4\uC5D0 \uC5BC\uC74C\uACFC                        
       \uC7AC\uB8CC\uB97C \uB123\uACE0 \uBE60\uB974\uAC8C \uD754\uB4E4\uC5B4                        
       \uCC28\uAC11\uACE0 \uACE0\uB974\uAC8C                          \uC11E\uB294
@@ -413,6 +447,10 @@ MonoBehaviour:
       BackBottomColor: {r: 0.2, g: 0.84705883, b: 0.72156864, a: 1}
     Background: {fileID: 21300000, guid: 5b1307a97656c8446b6aa1cc1849a377, type: 3}
     ThemeColor: {r: 0.46274513, g: 0.6745098, b: 0.64705884, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: 362b59bcfe6a5254faebffb36eb46a01, type: 3}
+    - {fileID: 21300000, guid: ab6854312b98da046b091fd31828aaf3, type: 3}
+    - {fileID: 21300000, guid: ab6854312b98da046b091fd31828aaf3, type: 3}
   - Name: "\uC555\uC0DD\uD2F0\uC544\uB098"
     GlassType: 26
     RecipeStepDatas:
@@ -435,6 +473,10 @@ MonoBehaviour:
       BackBottomColor: {r: 0.58431375, g: 0.76862746, b: 0.25882354, a: 1}
     Background: {fileID: 21300000, guid: acaf8cc7855384949bfbde2bd5a4deb7, type: 3}
     ThemeColor: {r: 1, g: 0.95294124, b: 0.70980394, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: 362b59bcfe6a5254faebffb36eb46a01, type: 3}
+    - {fileID: 21300000, guid: ab6854312b98da046b091fd31828aaf3, type: 3}
+    - {fileID: 21300000, guid: ab6854312b98da046b091fd31828aaf3, type: 3}
   - Name: "\uBE14\uB799 \uB7EC\uC2DC\uC548"
     GlassType: 27
     RecipeStepDatas:
@@ -463,6 +505,10 @@ MonoBehaviour:
       BackBottomColor: {r: 0.37254903, g: 0.18039216, b: 0.05490196, a: 1}
     Background: {fileID: 21300000, guid: 39c64e537e29c614ca2c44ba3a537bf3, type: 3}
     ThemeColor: {r: 0.882353, g: 0.81568635, b: 0.6901961, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: ab87cc4922565b845a8f7e1c3c001ee4, type: 3}
+    - {fileID: 21300000, guid: 2ef3ec33e30fe7540ab7857edac14324, type: 3}
+    - {fileID: 21300000, guid: 2ef3ec33e30fe7540ab7857edac14324, type: 3}
   - Name: "\uD50C\uB7AB \uD654\uC774\uD2B8 \uB7EC\uC2DC\uC548"
     GlassType: 27
     RecipeStepDatas:
@@ -495,6 +541,10 @@ MonoBehaviour:
       BackBottomColor: {r: 1, g: 1, b: 1, a: 1}
     Background: {fileID: 21300000, guid: 969bfeff390adc846b40c55de10ba9f7, type: 3}
     ThemeColor: {r: 0.86274517, g: 0.73333335, b: 0.6784314, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: ab87cc4922565b845a8f7e1c3c001ee4, type: 3}
+    - {fileID: 21300000, guid: 2ef3ec33e30fe7540ab7857edac14324, type: 3}
+    - {fileID: 21300000, guid: 2ef3ec33e30fe7540ab7857edac14324, type: 3}
   - Name: "\uC2A4\uD544\uB9AC\uCC98 \uB8E8\uC9C0"
     GlassType: 29
     RecipeStepDatas:
@@ -523,6 +573,10 @@ MonoBehaviour:
       BackBottomColor: {r: 0.60784316, g: 0.003921569, b: 0.23921569, a: 1}
     Background: {fileID: 21300000, guid: e7886e214496abe4598b1d58bf2cf84b, type: 3}
     ThemeColor: {r: 0.8941177, g: 0.654902, b: 0.64705884, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: 5b53da437c026e64ebc8e006614feb75, type: 3}
+    - {fileID: 21300000, guid: c59ef8990d98c564298ff5a2ef24544b, type: 3}
+    - {fileID: 21300000, guid: c59ef8990d98c564298ff5a2ef24544b, type: 3}
   - Name: "\uCE7C\uB9AC\uBAA8\uCD78"
     GlassType: 30
     RecipeStepDatas:
@@ -542,6 +596,8 @@ MonoBehaviour:
       LayerOrder: 0
     - Ingredient: 8
       LayerOrder: 0
+    - Ingredient: 8
+      LayerOrder: 0
     - Ingredient: 33
       LayerOrder: -1
     - Ingredient: 18
@@ -553,6 +609,10 @@ MonoBehaviour:
       BackBottomColor: {r: 0.18039216, g: 0, b: 0.043137256, a: 1}
     Background: {fileID: 21300000, guid: fb340371c91588e45a7ce2dee8920336, type: 3}
     ThemeColor: {r: 0.854902, g: 0.57254905, b: 0.6784314, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: 5b53da437c026e64ebc8e006614feb75, type: 3}
+    - {fileID: 21300000, guid: c59ef8990d98c564298ff5a2ef24544b, type: 3}
+    - {fileID: 21300000, guid: c59ef8990d98c564298ff5a2ef24544b, type: 3}
   - Name: "\uD799\uD0A4\uC2A4"
     GlassType: 30
     RecipeStepDatas:
@@ -581,6 +641,10 @@ MonoBehaviour:
       BackBottomColor: {r: 0.18039216, g: 0.92941177, b: 0.7882353, a: 1}
     Background: {fileID: 21300000, guid: 97d0280022e31a64180baee6e6f91ccb, type: 3}
     ThemeColor: {r: 0.627451, g: 0.9450981, b: 0.95294124, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: fd52b2051d377ee4b8bfe2cea709f537, type: 3}
+    - {fileID: 21300000, guid: f819c044f3e3b254abb4e978f060075c, type: 3}
+    - {fileID: 21300000, guid: f819c044f3e3b254abb4e978f060075c, type: 3}
   - Name: "\uC778\uD06C\uB808\uB354\uBE14 \uD5D0\uD06C"
     GlassType: 31
     RecipeStepDatas:
@@ -613,6 +677,10 @@ MonoBehaviour:
       BackBottomColor: {r: 0.49803922, g: 0.27450982, b: 0.02745098, a: 1}
     Background: {fileID: 21300000, guid: 2c4e27c6d4edfe54fb978f217d858f6b, type: 3}
     ThemeColor: {r: 0.5058824, g: 0.8745099, b: 0.92549026, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: fd52b2051d377ee4b8bfe2cea709f537, type: 3}
+    - {fileID: 21300000, guid: f819c044f3e3b254abb4e978f060075c, type: 3}
+    - {fileID: 21300000, guid: f819c044f3e3b254abb4e978f060075c, type: 3}
   - Name: "\uC0AC\uCF00\uD2F0\uB2C8"
     GlassType: 28
     RecipeStepDatas:
@@ -651,6 +719,10 @@ MonoBehaviour:
       BackBottomColor: {r: 0.76862746, g: 0.85882354, b: 0.5568628, a: 1}
     Background: {fileID: 21300000, guid: 09592d124d77fbe43bb9905a1f5c4ee6, type: 3}
     ThemeColor: {r: 0.70980394, g: 0.5882353, b: 0.64705884, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: f238f662675c4b14f928540141815305, type: 3}
+    - {fileID: 21300000, guid: 6cbbe182907540247bcdc9f301e7be03, type: 3}
+    - {fileID: 21300000, guid: 6cbbe182907540247bcdc9f301e7be03, type: 3}
   - Name: "\uC0AC\uBB34\uB77C\uC774 \uB85D"
     GlassType: 31
     RecipeStepDatas:
@@ -677,3 +749,7 @@ MonoBehaviour:
       BackBottomColor: {r: 0.7764706, g: 0.8862745, b: 0.5058824, a: 1}
     Background: {fileID: 21300000, guid: dc4c7621a6bbe104dbdba27686e5cf75, type: 3}
     ThemeColor: {r: 0.882353, g: 0.83921576, b: 0.6039216, a: 1}
+    ResultSprites:
+    - {fileID: 21300000, guid: f238f662675c4b14f928540141815305, type: 3}
+    - {fileID: 21300000, guid: 6cbbe182907540247bcdc9f301e7be03, type: 3}
+    - {fileID: 21300000, guid: 6cbbe182907540247bcdc9f301e7be03, type: 3}

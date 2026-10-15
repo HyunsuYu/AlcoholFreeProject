@@ -14,6 +14,10 @@ public class PlotDataBuffer : SingleTonForGameObject<PlotDataBuffer>
 {
     private PlotData? m_plotData;
 
+    //[SerializeField] private float m_saveTimeLimit = 3.0f;
+    //private float m_saveTimer = 0.0f;
+    //private bool m_bisTrying2Save = false;
+
 
     public void Awake()
     {
@@ -26,6 +30,38 @@ public class PlotDataBuffer : SingleTonForGameObject<PlotDataBuffer>
             Debug.LogError("Failed to load plot data.");
         }
     }
+    //public void FixedUpdate()
+    //{
+    //    if(m_bisTrying2Save)
+    //    {
+    //        m_saveTimer += Time.fixedDeltaTime;
+
+    //        if (m_saveTimer > m_saveTimeLimit)
+    //        {
+    //            m_bisTrying2Save = false;
+    //            m_saveTimer = 0.0f;
+
+    //            try
+    //            {
+    //                string jsonData = JsonConvert.SerializeObject(m_plotData);
+
+    //                string directory = Path.GetDirectoryName(PlotDataFilePath);
+    //                if (!Directory.Exists(directory))
+    //                {
+    //                    Directory.CreateDirectory(directory);
+    //                }
+
+    //                File.WriteAllText(PlotDataFilePath, jsonData);
+    //            }
+    //            catch (Exception ex)
+    //            {
+    //                Debug.LogError($"Failed to save plot data to {PlotDataFilePath}: {ex.Message}");
+    //            }
+
+    //            Debug.Log("Save Sussess");
+    //        }
+    //    }
+    //}
 
     internal PlotData? PlotData
     {
@@ -84,6 +120,10 @@ public class PlotDataBuffer : SingleTonForGameObject<PlotDataBuffer>
             Debug.LogError("PlotDataBuffer has not been initialized with PlotData.");
             return false;
         }
+        //else if (m_bisTrying2Save)
+        //{
+        //    return true;
+        //}
 
         try
         {
@@ -102,6 +142,9 @@ public class PlotDataBuffer : SingleTonForGameObject<PlotDataBuffer>
             Debug.LogError($"Failed to save plot data to {PlotDataFilePath}: {ex.Message}");
             return false;
         }
+
+        //m_bisTrying2Save = true;
+        //m_saveTimer = 0.0f;
 
         return true;
     }

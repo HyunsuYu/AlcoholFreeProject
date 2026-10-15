@@ -80,8 +80,12 @@ public sealed class InventoryItem : MonoBehaviour
                     }
                 }
 
-                InventoryControl.Instance.InventoryLiqurePlaceholders[InventoryControl.Instance.CurSelectedPlaceholderIndex].Render(m_curItemType);
-                ChiefMiniGameManager.LiqurePlaceholderTable[InventoryControl.Instance.CurSelectedPlaceholderIndex] = m_curItemType;
+                //InventoryControl.Instance.InventoryLiqurePlaceholders[InventoryControl.Instance.CurSelectedPlaceholderIndex].Render(m_curItemType);
+                //ChiefMiniGameManager.LiqurePlaceholderTable[InventoryControl.Instance.CurSelectedPlaceholderIndex] = m_curItemType;
+                if (m_curItemType != InventoryControl.ItemType.None)
+                {
+                    ChiefMiniGameManager.Instance.CurSelectedLiqure = m_curItemType;
+                }
                 InventoryControl.Instance.CloseInventoryTab();
                 m_rectTransform_LiqureInfo.gameObject.SetActive(false);
                 break;
@@ -100,6 +104,8 @@ public sealed class InventoryItem : MonoBehaviour
                 }
                 InventoryControl.Instance.CloseInventoryTab();
                 m_rectTransform_LiqureInfo.gameObject.SetActive(false);
+
+                BarReceiptControl.Instance.AddItem(m_curItemType);
                 break;
 
             case InventoryControl.InventoryTabType.Ice:
@@ -113,12 +119,19 @@ public sealed class InventoryItem : MonoBehaviour
                 }
                 InventoryControl.Instance.CloseInventoryTab();
                 m_rectTransform_LiqureInfo.gameObject.SetActive(false);
+
+                BarReceiptControl.Instance.AddItem(m_curItemType);
                 break;
 
             case InventoryControl.InventoryTabType.Glass:
             case InventoryControl.InventoryTabType.Tool:
                 if(m_curItemType == InventoryControl.ItemType.Shaker)
                 {
+                    if (ChiefMiniGameManager.Instance.CurShakerItem != null)
+                    {
+                        return;
+                    }
+
                     ShakerItem shakerItem = Instantiate(m_prefab_Shaker, new Vector3(-1.75f, -2.5f, 0.0f), Quaternion.identity).GetComponent<ShakerItem>();
                     shakerItem.gameObject.name = "ShakerItem";
                     DontDestroyOnLoad(shakerItem.gameObject);
@@ -129,6 +142,11 @@ public sealed class InventoryItem : MonoBehaviour
                 }
                 else
                 {
+                    if (ChiefMiniGameManager.Instance.CurGlassItem != null)
+                    {
+                        return;
+                    }
+
                     GlassItem glassItem = Instantiate(m_prefab_GlassItem, new Vector3(-1.75f, -2.5f, 0.0f), Quaternion.identity).GetComponent<GlassItem>();
                     glassItem.gameObject.name = "glassItem";
                     DontDestroyOnLoad(glassItem.gameObject);

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: AbsintheCharacterResourceDesc
   m_EditorClassIdentifier: 
   CharacterSprites:
-  - {fileID: 21300000, guid: 69ee3d71a68dc7d4caa78ee62e258c8d, type: 3}
-  - {fileID: 21300000, guid: 9dcd067f40422dc458beaa33554043c2, type: 3}
-  - {fileID: 21300000, guid: 13f4064e52fcb324db406a413f85e897, type: 3}
-  - {fileID: 21300000, guid: 2b13d6c05144f2d43b301520a06b1253, type: 3}
-  - {fileID: 21300000, guid: 5e19a18d5244e7944b012206b75791b9, type: 3}
-  - {fileID: 21300000, guid: f22e5eeaed9e1764ab014c595cec6f66, type: 3}
-  - {fileID: 21300000, guid: 008d3b0abef554844a7f85c3295cb9e8, type: 3}
+  - {fileID: 21300000, guid: 807dc6a927f15eb4692bf81e7a227ca7, type: 3}
+  - {fileID: 21300000, guid: 5c7d5e9197b816c43bfd848a035f2f37, type: 3}
+  - {fileID: 21300000, guid: de26d5f4ad46cf34194a215ce7ba3e6f, type: 3}
+  - {fileID: 21300000, guid: 8a834092b43fe894086bf65297337766, type: 3}
+  - {fileID: 21300000, guid: 4691627ea241bdf41ad4c7c9325b67c3, type: 3}
+  - {fileID: 21300000, guid: 3401d43a9ec20c141bf0da9a3ce57a38, type: 3}
+  - {fileID: 21300000, guid: 5cbfbc1ebe4d9ad49b27f63893421593, type: 3}
   CharacterName: "\uB9C8\uD0C0 \uD558\uB9AC"

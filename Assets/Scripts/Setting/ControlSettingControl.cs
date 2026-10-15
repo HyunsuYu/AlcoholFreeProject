@@ -179,6 +179,6 @@ public sealed class ControlSettingControl : MonoBehaviour
         m_uis.Text_previewName.fontSize = (curSettingData.ControlSetting.FontSize * 0.4f) * 1.166666f;
         m_uis.Text_previewSpeakText.fontSize = curSettingData.ControlSetting.FontSize * 0.4f;
 
-        m_uis.Text_previewSpeakText.text = "{fade d=" + curSettingData.ControlSetting.FontSpeed + "}하나 둘 셋 넷{/fade}";
+        m_uis.Text_previewSpeakText.text = "{fade d=" + curSettingData.ControlSetting.FontSpeed + "}하나 둘 셋 넷 다섯 ~~~ 안녕하십니까 테스트입니다{/fade}";
     }
 }

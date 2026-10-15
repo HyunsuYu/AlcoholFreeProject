@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: CabernetSauvignonCharacterResourceDesc
   m_EditorClassIdentifier: 
   CharacterSprites:
-  - {fileID: 21300000, guid: 8b236a7641d9b1c4a943d8a6e2ae5119, type: 3}
-  - {fileID: 21300000, guid: 0f1c3f516e8fc6748be50806c5fc2ad4, type: 3}
-  - {fileID: 21300000, guid: 6a825e2cc42f2064a85cd40b431a8187, type: 3}
-  - {fileID: 21300000, guid: afd43a1514fcb164aabe86e07b57a5aa, type: 3}
-  - {fileID: 21300000, guid: fe6f87112a98dde478cc470f5520643c, type: 3}
-  - {fileID: 21300000, guid: 589399e8b45970e408c343b3be00db6c, type: 3}
-  - {fileID: 21300000, guid: 37f5e985e962e9f4296665bcadb75909, type: 3}
+  - {fileID: 21300000, guid: 22f5fbecf5f7b634aab7a38b6e08fd72, type: 3}
+  - {fileID: 21300000, guid: 0e2f362306a46fe459e07817c35a972a, type: 3}
+  - {fileID: 21300000, guid: 5695d0f72321938489801cea8ddc1dbc, type: 3}
+  - {fileID: 21300000, guid: 6adda5288477bf24d9031de97213b3c5, type: 3}
+  - {fileID: 21300000, guid: a6b3f2fd7f41216458a48707a509f9b0, type: 3}
+  - {fileID: 21300000, guid: b0621630a850ff04ab1fcaa3066c1745, type: 3}
+  - {fileID: 21300000, guid: b3c263084823206409698507b35004ac, type: 3}
   CharacterName: "\uCE74\uB12C\uB9AC\uC548 \uBA54\uB514\uCE58"

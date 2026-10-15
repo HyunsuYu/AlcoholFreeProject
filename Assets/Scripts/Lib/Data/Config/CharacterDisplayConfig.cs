@@ -15,6 +15,7 @@ public sealed class CharacterDisplayConfig : ScriptableObject
         public float HorizontalSpacing;
 
         public List<float> PerCharacterImagePositionPivot;
+        public List<Vector3> PerCharacterImageScale;
     }
 
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public sealed class NoonBranchButton : MonoBehaviour
@@ -12,5 +13,7 @@ public sealed class NoonBranchButton : MonoBehaviour
     public void SelectThisBranch()
     {
         NoonCanvasControl.CurSelectedBranchIndex = m_branchIndex;
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

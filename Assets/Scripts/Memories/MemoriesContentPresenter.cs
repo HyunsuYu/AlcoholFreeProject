@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -101,6 +102,10 @@ public sealed class MemoriesContentPresenter : MonoBehaviour
         {
             case MemoriesPageControl.MemoriesPageType.Story:
                 {
+                    if(!Directory.Exists(StoryMemoriesDictionaryPath))
+                    {
+                        Directory.CreateDirectory(StoryMemoriesDictionaryPath);
+                    }
                     string[] fileNames = System.IO.Directory.GetFiles(StoryMemoriesDictionaryPath);
 
                     int count = 0;
@@ -122,6 +127,10 @@ public sealed class MemoriesContentPresenter : MonoBehaviour
 
             case MemoriesPageControl.MemoriesPageType.CutScene:
                 {
+                    if (!Directory.Exists(CutSceneMemoriesDictionaryPath))
+                    {
+                        Directory.CreateDirectory(CutSceneMemoriesDictionaryPath);
+                    }
                     string[] fileNames = System.IO.Directory.GetFiles(CutSceneMemoriesDictionaryPath);
 
                     int count = 0;
@@ -143,6 +152,10 @@ public sealed class MemoriesContentPresenter : MonoBehaviour
 
             case MemoriesPageControl.MemoriesPageType.MiniGame:
                 {
+                    if (!Directory.Exists(MiniGameMemoriesDictionaryPath))
+                    {
+                        Directory.CreateDirectory(MiniGameMemoriesDictionaryPath);
+                    }
                     string[] fileNames = System.IO.Directory.GetFiles(MiniGameMemoriesDictionaryPath);
 
                     int count = 0;
